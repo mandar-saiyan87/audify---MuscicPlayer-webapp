@@ -1,13 +1,107 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/*********************  Default-CSS  *********************/
+:root {
+	scroll-behavior: unset;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+	-webkit-text-size-adjust: none
 }
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	overflow-x: hidden;
+	color: #8392A7;
+	background-color: #F9FAFC;
+	font-size: 18px;
+	line-height: 1.4;
+	font-weight: 400;
+}
+
+a,
+span,
+a:hover,
+a:active,
+button {
+	text-decoration: none;
+}
+
+a,
+div a:hover,
+div a:active,
+div a:focus,
+button {
+	text-decoration: none;
+	-webkit-transition: all 0.5s ease 0s;
+	-moz-transition: all 0.5s ease 0s;
+	-ms-transition: all 0.5s ease 0s;
+	-o-transition: all 0.5s ease 0s;
+	transition: all 0.5s ease 0s;
+}
+
+button:focus {
+	box-shadow: none !important;
+}
+
+p {
+	margin: 0;
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+	margin: 0;
+}
+
+ul,
+li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+.row {
+	margin: 0 -15px;
+}
+
+.container {
+	padding: 0 15px;
+}
+
+.col,
+[class*=col-] {
+	padding: 0 15px;
+}
+
+.common_btn {
+	font-size: 14px;
+	text-align: center;
+	color: #fff;
+	display: inline-block;
+	border-radius: 30px;
+	background: #3b7cff;
+	box-shadow: 0px 5px 20px rgba(59, 124, 255, 0.2);
+	padding: 10px 22px;
+	border: 1px solid #3b7cff;
+	;
+	line-height: 1;
+}
+
+.common_btn:hover {
+	background-color: #fff;
+	color: #3b7cff;
+}
+
+/*********************  Default-CSS  End *********************/
