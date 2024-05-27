@@ -1,6 +1,9 @@
 /*********************  Default-CSS  *********************/
 :root {
 	scroll-behavior: unset;
+	--primary-color: rgb(44, 169, 96);
+	--secondary-color: #373A40;
+	--tertiary-color: white
 }
 
 html {
@@ -14,7 +17,7 @@ html {
 }
 
 body {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Poppins', sans-serif;
 	overflow-x: hidden;
 	color: #8392A7;
 	background-color: #F9FAFC;
@@ -102,6 +105,48 @@ img {
 .common_btn:hover {
 	background-color: #fff;
 	color: #3b7cff;
+}
+
+/* ******************** Logo ************************/
+
+
+.logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 1.2rem 0;
+}
+
+.logo p {
+	font-weight: 700;
+	font-size: 1.3rem;
+	color: rgb(44, 169, 96);
+}
+
+.logo_img {
+	width: 2.1rem;
+	height: 2.1rem;
+}
+
+/******************** Nav Link ***********************/
+.nav_link {
+	color: white;
+	font-size: medium;
+	font-weight: 500;
+}
+
+.nav_link_active {
+	color: var(--primary-color);
+	font-size: medium;
+	font-weight: 500;
+}
+
+.search_input {
+	background: transparent;
+	border: none;
+	outline: none;
+	color: white
 }
 
 /*********************  Default-CSS  End *********************/
