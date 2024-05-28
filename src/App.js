@@ -7,6 +7,8 @@ import AroundYou from "./pages/AroundYou/AroundYou";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 
 let theme = createTheme()
 
@@ -39,9 +41,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </Provider>
   );
 }
 

@@ -1,15 +1,22 @@
-import React, { useEffect } from 'react'
-import { Outlet, useNavigate, useLocation } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Outlet, useNavigate, useLocation, NavLink } from 'react-router-dom'
 import styled from '@emotion/styled'
 import { LuSearch } from "react-icons/lu";
+import Drawer from '@mui/material/Drawer';
 import { Colors } from '../../../assets/constants';
+import { HiMenuAlt2 } from "react-icons/hi";
+import Logo from '../../../components/Logo';
+import { menubar } from '../../../assets/constants';
 
 
 const ContentDiv = styled('div')(({ theme }) => ({
   backgroundColor: 'black',
   width: '100%',
   height: '100dvh',
-  padding: '1.2rem'
+  padding: '2rem',
+  [theme.breakpoints.down('sm')]: {
+    padding: '1.2rem 1rem',
+  }
 }))
 
 
@@ -22,16 +29,42 @@ const SearchBar = styled('div')(({ theme }) => ({
   backgroundColor: Colors.secondary,
   width: '70%',
   borderRadius: '0.3rem',
-  marginBottom: '2rem',
   [theme.breakpoints.down('sm')]: {
     width: '100%'
   }
 }))
 
+const Contentheader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  marginBottom: '2rem',
+  gap: '1rem'
+}))
+
+const MenuDiv = styled.div`
+   margin-top: 1rem;
+   padding: 1rem;
+`
+
+const MenuItem = styled.div`
+   display: flex;
+  align-items: center;
+	justify-content: start;
+  gap: 0.3rem;
+  margin: 2rem 0;
+`
+
+
 function MainContent() {
 
   const currenturl = useLocation()
   const navigate = useNavigate()
+
+  const [menuDrawer, setmenuDrawer] = useState(false)
+
+  function toggleMenuDrawer() {
+    setmenuDrawer(false);
+  };
 
   useEffect(() => {
     if (currenturl.pathname === '/') {
@@ -40,13 +73,38 @@ function MainContent() {
   }, [currenturl, navigate])
 
   return (
-    <ContentDiv>
-      <SearchBar>
-        <LuSearch />
-        <input type="text" className='search_input' />
-      </SearchBar>
-      <Outlet />
-    </ContentDiv>
+    <>
+      <ContentDiv>
+        <Contentheader>
+          <HiMenuAlt2 size={30} className='menu_drawer_button' onClick={() => setmenuDrawer(true)} />
+          <SearchBar>
+            <LuSearch />
+            <input type="text" className='search_input' />
+          </SearchBar>
+        </Contentheader>
+        <Outlet />
+      </ContentDiv>
+      <Drawer open={menuDrawer} onClose={() => toggleMenuDrawer(false)} SlideProps={{
+        sx: {
+          backgroundColor: '#373A40',
+          width: '60%'
+        }
+      }}>
+        <Logo />
+        <MenuDiv>
+          {menubar.map((menu) => (
+            <NavLink to={menu.route} className={({ isActive }) =>
+              isActive ? 'nav_link_active' : 'nav_link'
+            }>
+              <MenuItem>
+                {menu.ico}
+                <p>{menu.name}</p>
+              </MenuItem>
+            </NavLink>
+          ))}
+        </MenuDiv>
+      </Drawer>
+    </>
   )
 }
 
