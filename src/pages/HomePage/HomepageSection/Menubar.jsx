@@ -9,7 +9,7 @@ import { menubar } from '../../../assets/constants';
 
 
 const Appmenu = styled('div')(({ theme }) => ({
-  backgroundColor: '#373A40',
+  backgroundColor: 'black',
   display: 'flex',
   flexDirection: 'column',
   width: '15%',

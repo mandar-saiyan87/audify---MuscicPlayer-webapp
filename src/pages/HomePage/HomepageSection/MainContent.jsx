@@ -10,10 +10,11 @@ import { menubar } from '../../../assets/constants';
 
 
 const ContentDiv = styled('div')(({ theme }) => ({
-  backgroundColor: 'black',
+  backgroundColor: '#373A40',
   width: '100%',
   height: '100dvh',
   padding: '2rem',
+  overflow: 'auto',
   [theme.breakpoints.down('sm')]: {
     padding: '1.2rem 1rem',
   }
@@ -26,7 +27,7 @@ const SearchBar = styled('div')(({ theme }) => ({
   justifyContent: 'start',
   gap: '0.5rem',
   padding: '0.7rem',
-  backgroundColor: Colors.secondary,
+  backgroundColor: 'black',
   width: '70%',
   borderRadius: '0.3rem',
   [theme.breakpoints.down('sm')]: {

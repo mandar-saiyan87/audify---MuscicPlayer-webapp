@@ -154,12 +154,14 @@ img {
 }
 
 .genre_selection {
+	width: max-content;
 	background-color: black;
 	color: white;
 	border-color: var(--secondary-color);
 	border-radius: 0.2rem;
-	padding: 0.3rem 0.5rem;
+	padding: 0.5rem 0.6rem;
 	font-size: 0.9rem;
+	margin: 0 0.2rem 0.2rem 0.2rem;
 }
 
 /************* Section Title ******************/

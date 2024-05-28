@@ -5,7 +5,7 @@ import { genres } from '../../assets/constants'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useGetTopChartsQuery } from '../../redux/services/shazamCore';
-import { data } from '../../redux/charts';
+import data from '../../redux/charts.json'
 
 const DiscoverMain = styled('div')(({ theme }) => ({
 
@@ -20,7 +20,7 @@ const DiscoverHeader = styled('div')(({ theme }) => ({
 function Discover() {
   // const { data, isfetching, error } = useGetTopChartsQuery();
 
-  console.log(data)
+  // console.log(data)
 
   const [genreSelect, setgenreSelect] = useState(genres[0].value)
 
@@ -39,9 +39,9 @@ function Discover() {
         margin: '1rem 0'
       }}>
         <Grid container spacing={2}>
-          {[...Array(10)].map((song, index) => (
+          {data?.map((song, index) => (
             <Grid item lg={3} md={4} sm={6} xs={12}>
-              <SongCard key={index} />
+              <SongCard key={song.id} song={song} songIndex={index} />
             </Grid>
           ))}
         </Grid>
