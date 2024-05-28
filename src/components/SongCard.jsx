@@ -29,19 +29,25 @@ const SongCardSec = styled('div')(({ theme }) => ({
   height: '230px'
 }))
 
-const SongCardTer = styled('div')(({ theme, props }) => ({
+const SongCardTer = styled('div')(({ theme, active }) => ({
   position: 'absolute',
   inset: '0',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: 'rgba(0, 0, 0, 0.5)'
+  ':hover': {
+    backgroundColor: active && 'rgba(0, 0, 0, 0.5)',
+    display: active ? 'flex' : '',
+  }
 }))
 
 function SongCard({ song, songIndex }) {
+
+  const isActive = true
+
   return (
     <SongCardMain>
       <SongCardSec>
-        <SongCardTer>
+        <SongCardTer active={isActive}>
 
         </SongCardTer>
       </SongCardSec>
