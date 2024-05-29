@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import { genres } from '../../assets/constants'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { useGetTopChartsQuery } from '../../redux/services/shazamCore';
+import { useGetTopTracksQuery } from '../../redux/services/spotifyApi';
 import data from '../../redux/charts.json'
 
 const DiscoverMain = styled('div')(({ theme }) => ({
@@ -18,7 +18,7 @@ const DiscoverHeader = styled('div')(({ theme }) => ({
 }))
 
 function Discover() {
-  // const { data, isfetching, error } = useGetTopChartsQuery();
+  // const { data, isfetching, error } = useGetTopTracksQuery();
 
   // console.log(data)
 
@@ -38,9 +38,9 @@ function Discover() {
       <Box sx={{
         margin: '1rem 0'
       }}>
-        <Grid container spacing={2}>
-          {data?.map((song, index) => (
-            <Grid item lg={3} md={4} sm={6} xs={12}>
+        <Grid container rowGap={4}>
+          {data.tracks?.map((song, index) => (
+            <Grid item xl={3} lg={4} sm={6} xs={12}>
               <SongCard key={song.id} song={song} songIndex={index} />
             </Grid>
           ))}

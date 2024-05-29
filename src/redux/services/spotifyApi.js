@@ -16,7 +16,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 //   console.error(error);
 // });
 
-export const shazamCoreApi = createApi({
+export const spotifyApi = createApi({
   reducerPath: 'shazamCoreApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://shazam-core7.p.rapidapi.com/',
@@ -31,4 +31,4 @@ export const shazamCoreApi = createApi({
 });
 
 
-export const { useGetTopChartsQuery } = shazamCoreApi;
+export const { useGetTopTracksQuery } = spotifyApi;

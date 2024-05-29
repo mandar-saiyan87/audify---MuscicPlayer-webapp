@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { shazamCoreApi } from './services/shazamCore'
+import { spotifyApi } from './services/spotifyApi'
 
 export const store = configureStore({
   reducer: {
-    [shazamCoreApi.reducerPath]: shazamCoreApi.reducer,
+    [spotifyApi.reducerPath]: spotifyApi.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(shazamCoreApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(spotifyApi.middleware),
 })

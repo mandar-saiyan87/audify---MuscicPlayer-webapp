@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Menubar from './HomepageSection/Menubar'
 import MainContent from './HomepageSection/MainContent'
 import styled from '@emotion/styled'

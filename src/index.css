@@ -172,4 +172,10 @@ img {
 	letter-spacing: 0.1rem;
 }
 
+.albumImage {
+	width: 100%;
+	height: 230px;
+	object-fit: cover;
+}
+
 /*********************  Default-CSS  End *********************/
