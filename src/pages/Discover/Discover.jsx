@@ -4,7 +4,6 @@ import styled from '@emotion/styled'
 import { genres } from '../../assets/constants'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { useGetTopTracksQuery } from '../../store/services/spotifyApi';
 import data from '../../store/charts.json'
 
 const DiscoverMain = styled('div')(({ theme }) => ({
@@ -18,9 +17,6 @@ const DiscoverHeader = styled('div')(({ theme }) => ({
 }))
 
 function Discover() {
-  // const { data, isfetching, error } = useGetTopTracksQuery();
-
-  // console.log(data)
 
   const [genreSelect, setgenreSelect] = useState(genres[0].value)
 
@@ -29,11 +25,6 @@ function Discover() {
     <DiscoverMain>
       <DiscoverHeader>
         <p className='section_title'>Discover</p>
-        <select name="" id="" value={genreSelect} onChange={(e) => setgenreSelect(e.target.value)} className='genre_selection'>
-          {genres.map((genre) => (
-            <option value={genre.value} key={genre.title}>{genre.title}</option>
-          ))}
-        </select>
       </DiscoverHeader>
       <Box sx={{
         margin: '1rem 0'

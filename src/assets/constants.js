@@ -1,9 +1,7 @@
 
 import appico from './images/icon_round.png'
 import { HiOutlineHome } from "react-icons/hi2";
-import { GiSoundOn } from "react-icons/gi";
-import { IoIosPeople } from "react-icons/io";
-import { BsSoundwave } from "react-icons/bs";
+import { LuSearch } from "react-icons/lu";
 
 export const AppImages = {
   appico
@@ -17,25 +15,15 @@ export const Colors = {
 
 export const menubar = [
   {
-    name: 'Discover',
-    route: '/discover',
-    ico: <HiOutlineHome size={22}/>
+    name: 'Home',
+    route: '/home',
+    ico: <HiOutlineHome size={22} />
   },
   {
-    name: 'Around You',
-    route: '/aroundyou',
-    ico: <GiSoundOn size={22} />
+    name: 'Search',
+    route: '/search',
+    ico: <LuSearch size={22} />
   },
-  {
-    name: 'Top Artists',
-    route: '/topartist',
-    ico: <IoIosPeople size={22} />
-  },
-  {
-    name: 'Top Charts',
-    route: '/topcharts',
-    ico: <BsSoundwave size={22} />
-  }
 ]
 
 export const genres = [
