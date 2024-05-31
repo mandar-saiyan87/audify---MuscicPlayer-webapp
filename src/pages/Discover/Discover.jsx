@@ -4,8 +4,8 @@ import styled from '@emotion/styled'
 import { genres } from '../../assets/constants'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { useGetTopTracksQuery } from '../../redux/services/spotifyApi';
-import data from '../../redux/charts.json'
+import { useGetTopTracksQuery } from '../../store/services/spotifyApi';
+import data from '../../store/charts.json'
 
 const DiscoverMain = styled('div')(({ theme }) => ({
 
