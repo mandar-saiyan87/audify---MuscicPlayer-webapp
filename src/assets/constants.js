@@ -9,8 +9,11 @@ export const AppImages = {
 
 export const Colors = {
   primary: 'rgb(44, 169, 96)',
-  secondary: '#373A40',
-  tertiary: 'white'
+  secondary: '#131314',
+  tertiary: 'rgb(36, 36, 36)',
+  quaternary: 'white',
+  defaulttext: '#8392A7'
+
 }
 
 export const menubar = [
@@ -24,6 +27,12 @@ export const menubar = [
     route: '/search',
     ico: <LuSearch size={22} />
   },
+]
+
+export const tabs = [
+  'All',
+  'Genre',
+  'Popular'
 ]
 
 export const genres = [

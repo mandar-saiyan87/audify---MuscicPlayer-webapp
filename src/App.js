@@ -1,14 +1,13 @@
 import React from "react";
 import Homepage from "./pages/HomePage/Homepage";
-import Discover from "./pages/Discover/Discover";
-import TopArtist from "./pages/TopArtists/TopArtist";
-import TopCharts from "./pages/TopCharts/TopCharts";
-import AroundYou from "./pages/AroundYou/AroundYou";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import { store } from './store/store'
 import { Provider } from "react-redux";
+import Home from "./pages/Home/Home";
+import Search from './pages/Search/Search'
+
 
 let theme = createTheme()
 
@@ -21,11 +20,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/home',
-        element: <Discover />
+        element: <Home />
       },
       {
         path: '/search',
-        element: <AroundYou />
+        element: <Search />
       },
     ]
   }

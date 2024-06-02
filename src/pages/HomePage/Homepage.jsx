@@ -1,13 +1,19 @@
-import React, { useEffect } from 'react'
-import Menubar from './HomepageSection/Menubar'
-import MainContent from './HomepageSection/MainContent'
+import React from 'react'
+import Menubar from './HomepageSection/MenuBar/Menubar'
+import MainContent from './HomepageSection/MainContent/MainContent'
 import styled from '@emotion/styled'
 
 
-const AppContainer = styled.div`
-  display: flex;
-  height: 100%
-`
+const AppContainer = styled('div')(({ theme }) => ({
+  display: 'flex',
+  height: '100%',
+  padding: '0.5rem',
+  backgroundColor: 'black',
+  [theme.breakpoints.down('sm')]: {
+    padding: '0',
+  }
+}))
+
 
 function Homepage() {
   return (
