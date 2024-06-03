@@ -6,7 +6,6 @@ import styled from '@emotion/styled'
 
 const AppContainer = styled('div')(({ theme }) => ({
   display: 'flex',
-  height: '100%',
   padding: '0.5rem',
   backgroundColor: 'black',
   [theme.breakpoints.down('sm')]: {

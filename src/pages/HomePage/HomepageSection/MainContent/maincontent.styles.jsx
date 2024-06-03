@@ -3,8 +3,8 @@ import { Colors } from '../../../../assets/constants'
 
 
 export const ContentDiv = styled('div')(({ theme }) => ({
-  width: '100%',
-  height: '100vh',
+  width: '80%',
+  minHeight: '100vh',
   marginLeft: '0.5rem',
   borderRadius: '0.3rem',
   overflow: 'auto',

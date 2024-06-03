@@ -9,6 +9,7 @@ export const AppImages = {
 
 export const Colors = {
   primary: 'rgb(44, 169, 96)',
+  primarycolor2: 'rgb(16, 232, 106)',
   secondary: '#131314',
   tertiary: 'rgb(36, 36, 36)',
   quaternary: 'white',
