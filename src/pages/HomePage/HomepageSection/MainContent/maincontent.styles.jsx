@@ -3,11 +3,11 @@ import { Colors } from '../../../../assets/constants'
 
 
 export const ContentDiv = styled('div')(({ theme }) => ({
-  width: '80%',
+  flex: '80%',
   minHeight: '100vh',
   marginLeft: '0.5rem',
   borderRadius: '0.3rem',
-  overflow: 'auto',
+  overflowY: 'auto',
   [theme.breakpoints.down('md')]: {
     marginLeft: '0',
   },
