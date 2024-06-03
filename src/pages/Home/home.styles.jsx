@@ -2,8 +2,8 @@ import styled from '@emotion/styled'
 import { Colors } from '../../assets/constants'
 
 export const HomeMain = styled('div')(({ theme }) => ({
-  // backgroundColor: 'rgb(27, 27, 27)',
-  height: '100%',
+  backgroundColor: 'rgb(27, 27, 27)',
+  // minHeight: '100%',
   padding: '2rem',
   [theme.breakpoints.down('sm')]: {
     padding: '1.5rem'
