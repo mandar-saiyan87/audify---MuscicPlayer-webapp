@@ -231,4 +231,23 @@ img {
 	transform: scale(1.05)
 }
 
+
+/********************************** Songs category Section **********************************/
+.section_title {
+	color: var(--quaternary-color);
+	font-size: 1.6rem;
+	font-weight: 500;
+}
+
+.section_showall {
+		color: var(--defaulttext-color);
+			font-size: 0.9rem;
+			cursor: pointer;
+
+}
+
+.swipper_container{
+
+	background-color: blue;
+}
 /*********************  Default-CSS  End *********************/

@@ -51,4 +51,17 @@ router.get('/albums', async (req, res) => {
   }
 })
 
+router.get('/categories', async (req, res) => {
+  try {
+    const categories = await sql`select * from public.categories`
+    if (categories.length > 0) {
+      res.status(200).json({ code: 200, categoryList: categories, msg: 'Category data fetched successfully' })
+    } else {
+      res.status(200).json({ code: 200, categoryList: [], msg: 'No category data added' })
+    }
+  } catch (error) {
+    res.status(500).send('Internal server error')
+  }
+})
+
 export default router;

@@ -29,10 +29,9 @@ export const menubar = [
   },
 ]
 
-export const tabs = [
+export const selectiontabs = [
   'All',
   'Genre',
-  'Popular'
 ]
 
 export const genres = [
