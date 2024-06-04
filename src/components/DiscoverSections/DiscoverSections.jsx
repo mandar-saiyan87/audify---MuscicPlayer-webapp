@@ -20,7 +20,6 @@ function DiscoverSections() {
     <DiscoverSectionMain>
       <SectionHeader>
         <p className='section_title'>Discover</p>
-        <p className='section_showall'>Show All</p>
       </SectionHeader>
       {/* <Slider >
         {data?.categoryList.map((category) => (
@@ -55,6 +54,7 @@ function DiscoverSections() {
         {data?.categoryList.map((category) => (
           <SwiperSlide
             key={category.categoryid}
+            style={{ maxWidth: '250px' }}
           >
             <Slide color={category.color}>{category.name}</Slide>
           </SwiperSlide>

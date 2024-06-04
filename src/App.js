@@ -7,6 +7,9 @@ import { store } from './store/store'
 import { Provider } from "react-redux";
 import Home from "./pages/Home/Home";
 import Search from './pages/Search/Search'
+import Albums from "./pages/Albums/Albums";
+import Tracks from "./pages/Tracks/Tracks";
+import Artists from "./pages/Artists/Artists";
 
 
 let theme = createTheme()
@@ -25,6 +28,18 @@ const router = createBrowserRouter([
       {
         path: '/search',
         element: <Search />
+      },
+      {
+        path: '/home/albums',
+        element: <Albums />
+      },
+      {
+        path: '/home/tracks',
+        element: <Tracks />
+      },
+      {
+        path: '/home/artists',
+        element: <Artists />
       },
     ]
   }

@@ -10,6 +10,7 @@ import TopAlbums from '../../components/TopAlbums/TopAlbums'
 import TopTracks from '../../components/TopTracks/TopTracks'
 import TopArtists from '../../components/TopArtists/TopArtists'
 import { useGetsongsQuery, useGetAlbumsQuery, useGetArtistsQuery } from '../../store/services/songsApi'
+import Genre from '../../components/Genre/Genre'
 
 
 function Home() {
@@ -29,10 +30,15 @@ function Home() {
           <Select key={index} active={activeSelection === tab} onClick={() => setActiveSelection(tab)}>{tab}</Select>
         ))}
       </SelectionTab>
-      <DiscoverSections />
-      <TopAlbums />
-      <TopTracks />
-      <TopArtists />
+      {activeSelection === 'All' ?
+        <>
+          <DiscoverSections />
+          <TopAlbums />
+          <TopTracks />
+          <TopArtists />
+        </> : activeSelection === 'Genre' && <Genre />
+      }
+
     </HomeMain>
   )
 }

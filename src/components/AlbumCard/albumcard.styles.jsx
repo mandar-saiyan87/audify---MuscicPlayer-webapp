@@ -4,12 +4,16 @@ import { Colors } from '../../assets/constants'
 
 
 export const AlbumCardMain = styled('div')(({ theme }) => ({
+  maxWidth: '300px',
   height: '300px',
   position: 'relative',
   cursor: 'pointer',
   ':hover > div': {
     display: 'flex',
     flexDirection: 'column',
+  },
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '100%'
   }
 }))
 

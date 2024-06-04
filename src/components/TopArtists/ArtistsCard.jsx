@@ -1,5 +1,5 @@
 import React from 'react'
-import { ArtistsCardMain, ArtistsCardImage } from './artists.styles'
+import { ArtistsCardMain, ArtistsCardImage } from './artistscard.styles'
 
 function ArtistsCard({ carddetails }) {
   return (

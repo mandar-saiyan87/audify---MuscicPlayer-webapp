@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import { Colors } from '../../assets/constants'
 
 export const ArtistsCardMain = styled('div')(({ theme }) => ({
+  maxWidth: '200px',
   height: '200px',
   display: 'flex',
   flexDirection: 'column',
@@ -10,6 +11,7 @@ export const ArtistsCardMain = styled('div')(({ theme }) => ({
 }))
 
 export const ArtistsCardImage = styled('div')(({ theme }) => ({
+  maxWidth: '150px',
   height: '150px',
   borderRadius: '50%',
   overflow: 'none'

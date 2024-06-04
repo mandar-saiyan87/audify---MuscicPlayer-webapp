@@ -291,6 +291,14 @@ img {
 	cursor: pointer;
 }
 
+.page_head_text {
+	max-width: 900px;
+	font-size: 1rem;
+	color: var(--quaternary-color);
+	line-height: 1.5rem;
+}
+
+
 /*************************** All Artists CSS *******************/
 .artists_image {
 	width: 100%;
