@@ -21,17 +21,22 @@ function TopAlbums() {
       </SectionHeader>
       <Swiper
         slidesPerView={6}
-        spaceBetween={25}
+        spaceBetween={15}
         freeMode
         modules={[FreeMode]}
         className='swiper_main'
         breakpoints={{
-          1024: {
+          1200: {
             slidesPerView: 5,
             spaceBetween: 15
           },
-          768: {
+
+          1024: {
             slidesPerView: 3.5,
+            spaceBetween: 15
+          },
+          768: {
+            slidesPerView: 3,
             spaceBetween: 15
           },
           575: {

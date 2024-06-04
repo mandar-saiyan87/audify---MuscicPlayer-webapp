@@ -8,6 +8,7 @@ import { selectiontabs } from '../../assets/constants'
 import DiscoverSections from '../../components/DiscoverSections/DiscoverSections'
 import TopAlbums from '../../components/TopAlbums/TopAlbums'
 import TopTracks from '../../components/TopTracks/TopTracks'
+import TopArtists from '../../components/TopArtists/TopArtists'
 import { useGetsongsQuery, useGetAlbumsQuery, useGetArtistsQuery } from '../../store/services/songsApi'
 
 
@@ -31,6 +32,7 @@ function Home() {
       <DiscoverSections />
       <TopAlbums />
       <TopTracks />
+      <TopArtists />
     </HomeMain>
   )
 }

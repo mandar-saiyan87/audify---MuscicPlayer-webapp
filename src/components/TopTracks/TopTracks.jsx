@@ -24,12 +24,16 @@ function TopTracks() {
         modules={[FreeMode]}
         className='swiper_main'
         breakpoints={{
-          1024: {
+          1200: {
             slidesPerView: 5,
             spaceBetween: 15
           },
-          768: {
+          1024: {
             slidesPerView: 3.5,
+            spaceBetween: 15
+          },
+          768: {
+            slidesPerView: 3,
             spaceBetween: 15
           },
           575: {

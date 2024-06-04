@@ -21,4 +21,5 @@ export const Slide = styled('div')(({ theme, color }) => ({
   padding: '1rem',
   fontSize: '1.5rem',
   fontWeight: '600',
+  cursor: 'pointer'
 }))
