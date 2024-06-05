@@ -10,6 +10,7 @@ import Search from './pages/Search/Search'
 import Albums from "./pages/Albums/Albums";
 import Tracks from "./pages/Tracks/Tracks";
 import Artists from "./pages/Artists/Artists";
+import AlbumDetails from "./pages/AlbumDetails/AlbumDetails";
 
 
 let theme = createTheme()
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: '/home/artists',
         element: <Artists />
+      },
+      {
+        path: '/home/albums/:albumid',
+        element: <AlbumDetails />
       },
     ]
   }

@@ -3,7 +3,8 @@ import { Colors } from '../../assets/constants'
 
 export const AlbumPageMain = styled('div')(({ theme }) => ({
   padding: '2rem',
-  maxWidth: '1536px'
+  maxWidth: '1536px',
+  backgroundColor: 'rgb(27, 27, 27)'
 }))
 
 export const AlbumContainer = styled('div')(({ theme }) => ({

@@ -1,10 +1,21 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { AlbumCardMain, AlbumDetails, AlbumOverlay, ImgDiv } from './albumcard.styles'
 import { FaPlay } from "react-icons/fa6";
 
 function AlbumCard({ carddetails }) {
+
+  const navigate = useNavigate()
+
+  function navigateTo() {
+    navigate(
+      `/home/albums/${carddetails.albumid}`,
+      { state: carddetails }
+    )
+  }
+
   return (
-    <AlbumCardMain>
+    <AlbumCardMain onClick={navigateTo}>
       <AlbumOverlay>
         <button className='play_button'>
           <FaPlay color='black' size={20} />

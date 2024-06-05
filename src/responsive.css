@@ -19,7 +19,26 @@
 }
 
 @media (max-width: 575px) {
+  .album_details_image {
+    width: 100%;
+    height: 140px;
+    border-radius: 0.3rem;
+    object-fit: fill;
+  }
 
+  .seperator {
+    background-color: var(--quaternary-color);
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+  }
+
+  .track_card_img {
+    width: 90px;
+    height: 65px;
+    object-fit: fill;
+    border-radius: 0.3rem;
+  }
 }
 
 @media (max-width: 375px) {}
