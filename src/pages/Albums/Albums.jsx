@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { AlbumPageMain, AlbumContainer, CardContainer } from './albums.styles'
 import AlbumCard from '../../components/AlbumCard/AlbumCard'
@@ -21,7 +21,7 @@ function Albums() {
         ipsum repellat ipsa aspernatur voluptas amet. Laudantium distinctio aliquam fugiat placeat officia necessitatibus.</p>
       <AlbumContainer>
         {data?.albumsList.map((album) => (
-          <CardContainer >
+          <CardContainer key={album.albumid}>
             <AlbumCard carddetails={album} />
           </CardContainer>
         ))}

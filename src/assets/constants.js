@@ -14,8 +14,8 @@ export const Colors = {
   tertiary: 'rgb(36, 36, 36)',
   quaternary: 'white',
   defaulttext: '#8392A7'
-
 }
+
 
 export const menubar = [
   {

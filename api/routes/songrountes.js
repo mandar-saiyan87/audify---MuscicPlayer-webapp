@@ -64,4 +64,17 @@ router.get('/categories', async (req, res) => {
   }
 })
 
+router.get('/genres', async (req, res) => {
+  try {
+    const genre = await sql`select * from public.genres`
+    if (genre.length > 0) {
+      res.status(200).json({ code: 200, genreList: genre, msg: 'Genre data fetched successfully' })
+    } else {
+      res.status(200).json({ code: 200, genreList: [], msg: 'No Genre data added' })
+    }
+  } catch (error) {
+    res.status(500).send('Internal server error')
+  }
+})
+
 export default router;

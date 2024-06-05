@@ -22,7 +22,7 @@ function Tracks() {
         ipsum repellat ipsa aspernatur voluptas amet. Laudantium distinctio aliquam fugiat placeat officia necessitatibus.</p>
       <TrackContainer>
         {data?.trackList.map((track) => (
-          <CardContainer >
+          <CardContainer key={track.songid}>
             <AlbumCard carddetails={track} />
           </CardContainer>
         ))}
