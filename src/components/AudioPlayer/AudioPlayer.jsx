@@ -50,7 +50,6 @@ function AudioPlayer() {
 
   console.log(currentTracks[trackIndex]?.mp3url)
 
-  const trackUrl = currentTracks[trackIndex]?.mp3url || '';
 
   return (
     <AudioPlayerMain>
@@ -61,7 +60,7 @@ function AudioPlayer() {
         <AudioPalyer>
           <audio
             ref={audioRef}
-            src={`https://drive.google.com/file/d/1PjhJWdT9hdQwTTR2U0QKEMZZx6Xw6pq5/view?usp=sharing`}
+            src={currentTracks[trackIndex]?.mp3url}
             onTimeUpdate={handleTimeUpdate}
             onLoadedMetadata={handleMetadata}
           >
