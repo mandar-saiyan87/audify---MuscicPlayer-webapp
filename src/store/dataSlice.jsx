@@ -4,7 +4,8 @@ const initialState = {
   discover: [],
   albums: [],
   artists: [],
-  tracks: []
+  tracks: [],
+  currentPlaylist: []
 }
 
 
@@ -20,9 +21,15 @@ export const dataSlice = createSlice({
     },
     setArtists: (state, action) => {
       state.artists = action.payload
+    },
+    setcurrentPlaylist: (state, action) => {
+      state.currentPlaylist = action.payload
+    },
+    clearPlayer: (state, action) => {
+      state.currentPlaylist = []
     }
   },
 })
 
-export const { setAlbums, setTracks, setArtists } = dataSlice.actions
+export const { setAlbums, setTracks, setArtists, setcurrentPlaylist, clearPlayer } = dataSlice.actions
 export default dataSlice.reducer

@@ -4,10 +4,10 @@ import { Colors } from '../../../../assets/constants'
 
 export const ContentDiv = styled('div')(({ theme }) => ({
   flex: '80%',
-  minHeight: '100vh',
+  height: '100%',
   marginLeft: '0.5rem',
   borderRadius: '0.3rem',
-  overflowY: 'auto',
+  overflow: 'auto',
   [theme.breakpoints.down('md')]: {
     marginLeft: '0',
   },

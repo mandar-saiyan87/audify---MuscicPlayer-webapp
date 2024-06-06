@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useLocation } from 'react-router-dom'
 import { useGetSongsbyalbumQuery } from '../../store/services/songsApi'
-import { setTracks } from '../../store/dataSlice'
+import { setTracks, setcurrentPlaylist } from '../../store/dataSlice'
 import { getRandomColor } from '../../utils/generatecolor'
+import { FaPlay } from "react-icons/fa6";
 import {
   AlbumMain,
   AlbumHead,
@@ -27,9 +28,11 @@ function AlbumDetails() {
 
   const { data, error, isLoading } = useGetSongsbyalbumQuery(albumId.albumid)
 
-  console.log(data)
-
   const year = new Date(state.releasedate).getFullYear()
+
+  function handleAlbumPlay() {
+    dispatch(setcurrentPlaylist(data?.trackList))
+  }
 
   useEffect(() => {
     dispatch(setTracks(data?.trackList))
@@ -43,6 +46,9 @@ function AlbumDetails() {
             <img src={state.imageurl} alt="album_img" className='album_details_image' />
           </Imagediv>
           <AlbumDetailsDiv>
+            <button className='play_button' onClick={handleAlbumPlay}>
+              <FaPlay color='black' size={20} />
+            </button>
             <p>{state.title}</p>
             <AlbumDetailsSub>
               <p>{state.artistname}</p>

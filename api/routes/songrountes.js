@@ -40,6 +40,23 @@ router.get('/tracksbyalbum/:id', async (req, res) => {
   }
 })
 
+router.get('/tracksbyid/:id', async (req, res) => {
+
+  const trackid = req.params.id
+  console.log(trackid)
+  try {
+    const tracks = await sql`select * from public.songs where songid=${trackid}`
+    console.log(tracks)
+    if (tracks.length > 0) {
+      res.status(200).json({ code: 200, trackList: tracks, msg: 'Tracks fetched successfully' })
+    } else {
+      res.status(200).json({ code: 200, trackList: [], msg: 'No tracks added' })
+    }
+  } catch (error) {
+    res.status(500).send('Internal server error')
+  }
+})
+
 router.get('/artists', async (req, res) => {
   try {
     const artists = await sql`select * from public.artists`
