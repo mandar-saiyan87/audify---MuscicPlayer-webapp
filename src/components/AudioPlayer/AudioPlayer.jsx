@@ -9,7 +9,7 @@ import {
   SongDetails
 } from './audioplayer.styles'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearPlayer, setCurrentTrackIndex } from '../../store/dataSlice'
+import { clearPlayer, setCurrentTrackIndex, setcurrentPlaylist } from '../../store/dataSlice'
 import { FaPlay, FaPause, FaStepForward, FaStepBackward } from "react-icons/fa";
 import { formatTime } from '../../utils/formatDuration';
 
@@ -18,6 +18,7 @@ function AudioPlayer() {
   const dispatch = useDispatch()
 
   const currentTracks = useSelector((state) => state.appdata.currentPlaylist)
+  const allTracks = useSelector((state) => state.appdata.tracks);
   // const currentTrackIndex = useSelector((state) => state.appdata.currentTrackIndex)
   // console.log(currentTracks) 
   const audioRef = useRef(null)
@@ -53,14 +54,24 @@ function AudioPlayer() {
   }
 
   function playNext() {
-    const next = (trackIndex + 1) % currentTracks.length
-    dispatch(setCurrentTrackIndex(next))
+    const nextIndex = (trackIndex + 1) % currentTracks.length
+    if (nextIndex === 0 && currentTracks.length < allTracks.length) {
+      dispatch(setcurrentPlaylist(allTracks));
+      dispatch(setCurrentTrackIndex(0));
+    } else {
+      dispatch(setCurrentTrackIndex(nextIndex));
+    }
     setIsPlaying(false)
   }
 
   function playPrev() {
-    const previous = (trackIndex - 1 + currentTracks.length) % currentTracks.length
-    dispatch(setCurrentTrackIndex(previous))
+    if (trackIndex === 0 && currentTracks.length < allTracks.length) {
+      dispatch(setcurrentPlaylist(allTracks));
+      dispatch(setCurrentTrackIndex(allTracks.length - 1));
+    } else {
+      const prevIndex = (trackIndex - 1 + currentTracks.length) % currentTracks.length;
+      dispatch(setCurrentTrackIndex(prevIndex));
+    }
     setIsPlaying(false)
   }
 

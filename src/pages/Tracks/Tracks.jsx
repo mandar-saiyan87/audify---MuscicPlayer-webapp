@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { TracksPageMain, TrackContainer, CardContainer } from './tracks.styles'
 import { useGetsongsQuery } from '../../store/services/songsApi'
-import AlbumCard from '../../components/AlbumCard/AlbumCard'
-import { setTracks } from '../../store/dataSlice'
+import TopTracksCard from '../../components/TopTracksCard/TopTracks'
+import { setTracks, setcurrentPlaylist } from '../../store/dataSlice'
 
 function Tracks() {
 
@@ -13,6 +13,7 @@ function Tracks() {
 
   useEffect(() => {
     dispatch(setTracks(data?.trackList))
+    dispatch(setcurrentPlaylist(data?.trackList))
   }, [data, dispatch])
 
 
@@ -23,7 +24,7 @@ function Tracks() {
       <TrackContainer>
         {data?.trackList.map((track) => (
           <CardContainer key={track.songid}>
-            <AlbumCard carddetails={track} />
+            <TopTracksCard carddetails={track} />
           </CardContainer>
         ))}
       </TrackContainer>

@@ -24,6 +24,7 @@ export const dataSlice = createSlice({
       state.artists = action.payload
     },
     setcurrentPlaylist: (state, action) => {
+      // console.log(action.payload)
       state.currentPlaylist = action.payload
       state.currentTrackIndex = 0
     },

@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { TopTracksCardMain, TrackDetails, Overlay, ImgDiv } from './albumcard.styles'
+import { useDispatch } from 'react-redux';
+import { TopTracksCardMain, TrackDetails, Overlay, ImgDiv } from './toptracks.styles'
 import { FaPlay } from "react-icons/fa6";
+import { setcurrentPlaylist } from '../../store/dataSlice';
 
-function AlbumCard({ carddetails }) {
+function TopTracksCard({ carddetails }) {
 
   const navigate = useNavigate()
+
+  const dispatch = useDispatch()
+
+  const [hoverState, setHoverState] = useState()
 
   function navigateTo() {
     navigate(
@@ -14,10 +20,21 @@ function AlbumCard({ carddetails }) {
     )
   }
 
+  function handleCardClick() { }
+
+  function handlePlayClick(e) {
+    e.stopPropagation()
+    dispatch(setcurrentPlaylist([carddetails]))
+  }
+
+
   return (
-    <TopTracksCardMain onClick={navigateTo}>
-      <Overlay>
-        <button className='play_button'>
+    <TopTracksCardMain
+      onMouseEnter={() => setHoverState(true)}
+      onMouseLeave={() => setHoverState(false)}
+    >
+      <Overlay Hover={hoverState}>
+        <button className='play_button' onClick={handlePlayClick}>
           <FaPlay color='black' size={20} />
         </button>
 
@@ -33,4 +50,4 @@ function AlbumCard({ carddetails }) {
   )
 }
 
-export default AlbumCard
+export default TopTracksCard

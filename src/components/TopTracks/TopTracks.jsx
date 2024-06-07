@@ -6,9 +6,9 @@ import { FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import { useGetsongsQuery } from '../../store/services/songsApi';
-import AlbumCard from '../AlbumCard/AlbumCard';
 import { useDispatch } from 'react-redux';
 import { setTracks } from '../../store/dataSlice';
+import TopTracksCard from '../TopTracksCard/TopTracks';
 
 function TopTracks() {
 
@@ -59,7 +59,7 @@ function TopTracks() {
       >
         {data?.trackList.slice(0, 5).map((track) => (
           <SwiperSlide key={track.songid} style={{ maxWidth: '300px' }}>
-            <AlbumCard carddetails={track} />
+            <TopTracksCard carddetails={track} />
           </SwiperSlide>
         ))}
       </Swiper>
