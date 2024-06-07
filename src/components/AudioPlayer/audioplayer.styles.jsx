@@ -45,5 +45,10 @@ export const PlayerButtonsComponent = styled('div')(({ theme }) => ({
 }))
 
 export const SongDetails = styled('div')(({ theme }) => ({
+  display: 'flex'
+}))
 
+export const ImgaeDiv = styled('div')(({ theme }) => ({
+  width: '100px',
+  height: '100px'
 }))

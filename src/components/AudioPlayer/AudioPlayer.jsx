@@ -6,7 +6,8 @@ import {
   PlayerButtonsComponent,
   SeekBarComponent,
   SeekBarDuration,
-  SongDetails
+  SongDetails,
+  ImgaeDiv
 } from './audioplayer.styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearPlayer, setCurrentTrackIndex, setcurrentPlaylist } from '../../store/dataSlice'
@@ -89,8 +90,12 @@ function AudioPlayer() {
       </button>
       <AudioPlayerComponent>
         <SongDetails>
-          <div>
+          <ImgaeDiv>
             <img src={currentTracks[trackIndex].imageurl} alt="track_image" />
+          </ImgaeDiv>
+          <div>
+            <p>{currentTracks[trackIndex].title}</p>
+            <p>{currentTracks[trackIndex].artistname}</p>
           </div>
         </SongDetails>
         <Player>
