@@ -22,7 +22,7 @@ const HomePageView = styled('div')(({ theme, playState }) => ({
   height: '100vh',
   margin: 'auto',
   padding: '0.5rem',
-  // paddingBottom: playState && '1rem'
+  paddingBottom: playState && '7rem'
 }))
 
 const AudioPlayerContainer = styled('div')({
@@ -30,8 +30,7 @@ const AudioPlayerContainer = styled('div')({
   position: 'fixed',
   bottom: 0,
   backgroundColor: 'black',
-  marginTop: '1rem',
-  zIndex: 1000, // Ensure it appears above other content
+  zIndex: 1000,
 })
 
 
@@ -41,7 +40,7 @@ function Homepage() {
 
   return (
     <AppContainer>
-      <HomePageView playList={playlist.length > 0 && true }>
+      <HomePageView playState={playlist.length > 0 && true}>
         <Menubar />
         <MainContent />
       </HomePageView>

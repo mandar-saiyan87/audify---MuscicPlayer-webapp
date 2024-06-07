@@ -5,7 +5,7 @@ export const AudioPlayerMain = styled('div')(({ theme }) => ({
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
-  backgroundColor: 'blue',
+  backgroundColor: 'black',
   zIndex: '20',
   padding: '0.5rem'
 }))
@@ -15,7 +15,7 @@ export const AudioPlayerComponent = styled('div')(({ theme }) => ({
 }))
 
 
-export const AudioPalyer = styled('div')(({ theme }) => ({
+export const Player = styled('div')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   maxWidth: 'max-content',

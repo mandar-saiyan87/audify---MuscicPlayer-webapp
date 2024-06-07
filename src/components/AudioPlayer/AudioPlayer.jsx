@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import {
   AudioPlayerMain,
   AudioPlayerComponent,
-  AudioPalyer,
+  Player,
   PlayerButtonsComponent,
   SeekBarComponent,
   SeekBarDuration,
@@ -89,9 +89,11 @@ function AudioPlayer() {
       </button>
       <AudioPlayerComponent>
         <SongDetails>
+          <div>
 
+          </div>
         </SongDetails>
-        <AudioPalyer>
+        <Player>
           <audio
             ref={audioRef}
             src={currentTracks[trackIndex]?.mp3url}
@@ -117,7 +119,7 @@ function AudioPlayer() {
             <button className='player_controls' onClick={playpause}>{isPlaying ? <FaPause /> : <FaPlay />}</button>
             <button className='player_controls' onClick={playNext}><FaStepForward /></button>
           </PlayerButtonsComponent>
-        </AudioPalyer>
+        </Player>
       </AudioPlayerComponent>
     </AudioPlayerMain>
   )
