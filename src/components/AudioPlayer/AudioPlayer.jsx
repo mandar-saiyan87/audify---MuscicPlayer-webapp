@@ -63,6 +63,7 @@ function AudioPlayer() {
             src={currentTracks[trackIndex]?.mp3url}
             onTimeUpdate={handleTimeUpdate}
             onLoadedMetadata={handleMetadata}
+            crossOrigin='anonymous'
           >
           </audio>
           <SeekBarComponent>
