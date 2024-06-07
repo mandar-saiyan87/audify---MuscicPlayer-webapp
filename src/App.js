@@ -17,7 +17,7 @@ let theme = createTheme()
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/' || '/home',
     element: <div className="">
       <Homepage />
     </div>,
