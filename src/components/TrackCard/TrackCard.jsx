@@ -9,20 +9,31 @@ import {
   TrackDetailtext
 } from './trackcard.styles'
 import { FaPlay } from "react-icons/fa6";
+import { setCurrentTrackIndex } from '../../store/dataSlice';
+import { useDispatch } from 'react-redux';
 
-function TrackCard({ track, index }) {
+function TrackCard({ track, index, setPlaylist }) {
 
   const [hoverState, setHoverState] = useState(false)
+
+  const dispatch = useDispatch()
+
 
   const Duration = (duration) => {
     return duration.substring(0, 5); // Extracts the first 5 characters (MM:SS)
   };
 
+  function handleClick() {
+    setPlaylist()
+    dispatch(setCurrentTrackIndex(index))
+  }
+
   return (
     <TrackCardMain
       onMouseEnter={() => setHoverState(true)}
       onMouseLeave={() => setHoverState(false)}
-      hoverstate={hoverState}>
+      hoverstate={hoverState}
+      onClick={handleClick}>
       <TrackDetails>
         <Trackid>
           {hoverState ? <FaPlay /> : <p>{index + 1}</p>}

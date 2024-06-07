@@ -5,20 +5,24 @@ import {
   AudioPalyer,
   PlayerButtonsComponent,
   SeekBarComponent,
-  SeekBarDuration
+  SeekBarDuration,
+  SongDetails
 } from './audioplayer.styles'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearPlayer } from '../../store/dataSlice'
+import { clearPlayer, setCurrentTrackIndex } from '../../store/dataSlice'
 import { FaPlay, FaPause, FaStepForward, FaStepBackward } from "react-icons/fa";
+import { formatTime } from '../../utils/formatDuration';
 
 function AudioPlayer() {
 
   const dispatch = useDispatch()
 
   const currentTracks = useSelector((state) => state.appdata.currentPlaylist)
+  // const currentTrackIndex = useSelector((state) => state.appdata.currentTrackIndex)
   // console.log(currentTracks) 
   const audioRef = useRef(null)
-  const [trackIndex, setTrackIndex] = useState(0)
+  // const [trackIndex, setTrackIndex] = useState(0)
+  const trackIndex = useSelector((state) => state.appdata.currentTrackIndex)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
   const [volume, setVolume] = useState(0)
@@ -48,7 +52,23 @@ function AudioPlayer() {
     setIsPlaying(!isPlaying)
   }
 
-  console.log(currentTracks[trackIndex]?.mp3url)
+  function playNext() {
+    const next = (trackIndex + 1) % currentTracks.length
+    dispatch(setCurrentTrackIndex(next))
+    setIsPlaying(false)
+  }
+
+  function playPrev() {
+    const previous = (trackIndex - 1 + currentTracks.length) % currentTracks.length
+    dispatch(setCurrentTrackIndex(previous))
+    setIsPlaying(false)
+  }
+
+  const handleEnded = () => {
+    setIsPlaying(false);
+  };
+
+  // console.log(currentTracks[trackIndex]?.mp3url)
 
 
   return (
@@ -57,13 +77,16 @@ function AudioPlayer() {
         <p>x</p>
       </button>
       <AudioPlayerComponent>
+        <SongDetails>
+
+        </SongDetails>
         <AudioPalyer>
           <audio
             ref={audioRef}
             src={currentTracks[trackIndex]?.mp3url}
             onTimeUpdate={handleTimeUpdate}
             onLoadedMetadata={handleMetadata}
-            crossOrigin='anonymous'
+            onEnded={handleEnded}
           >
           </audio>
           <SeekBarComponent>
@@ -75,13 +98,13 @@ function AudioPlayer() {
               className='seekbar'
             />
             <SeekBarDuration>
-              <span>{currentTime.toFixed(2)}</span> / <span>{duration.toFixed(2)}</span>
+              <span>{formatTime(currentTime)}</span> / <span>{formatTime(duration)}</span>
             </SeekBarDuration>
           </SeekBarComponent>
           <PlayerButtonsComponent>
-            <button className='player_controls'><FaStepBackward /></button>
+            <button className='player_controls' onClick={playPrev}><FaStepBackward /></button>
             <button className='player_controls' onClick={playpause}>{isPlaying ? <FaPause /> : <FaPlay />}</button>
-            <button className='player_controls'><FaStepForward /></button>
+            <button className='player_controls' onClick={playNext}><FaStepForward /></button>
           </PlayerButtonsComponent>
         </AudioPalyer>
       </AudioPlayerComponent>

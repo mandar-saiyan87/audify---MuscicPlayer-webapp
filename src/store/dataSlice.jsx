@@ -5,7 +5,8 @@ const initialState = {
   albums: [],
   artists: [],
   tracks: [],
-  currentPlaylist: []
+  currentPlaylist: [],
+  currentTrackIndex: 0,
 }
 
 
@@ -24,12 +25,17 @@ export const dataSlice = createSlice({
     },
     setcurrentPlaylist: (state, action) => {
       state.currentPlaylist = action.payload
+      state.currentTrackIndex = 0
     },
     clearPlayer: (state, action) => {
       state.currentPlaylist = []
-    }
+      state.currentTrackIndex = 0
+    },
+    setCurrentTrackIndex: (state, action) => {
+      state.currentTrackIndex = action.payload
+    },
   },
 })
 
-export const { setAlbums, setTracks, setArtists, setcurrentPlaylist, clearPlayer } = dataSlice.actions
+export const { setAlbums, setTracks, setArtists, setcurrentPlaylist, clearPlayer, setCurrentTrackIndex } = dataSlice.actions
 export default dataSlice.reducer

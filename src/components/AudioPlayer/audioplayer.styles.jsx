@@ -43,3 +43,7 @@ export const PlayerButtonsComponent = styled('div')(({ theme }) => ({
   justifyContent: 'center',
   columnGap: '0.8rem'
 }))
+
+export const SongDetails = styled('div')(({ theme }) => ({
+
+}))

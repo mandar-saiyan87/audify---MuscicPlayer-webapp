@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useLocation } from 'react-router-dom'
 import { useGetSongsbyalbumQuery } from '../../store/services/songsApi'
@@ -18,6 +18,9 @@ import TrackCard from '../../components/TrackCard/TrackCard'
 
 function AlbumDetails() {
 
+  const albumPlaying = useSelector((state) => state.appdata.albumPlaying)
+
+
   const bgcolor = getRandomColor()
 
   const albumId = useParams()
@@ -31,6 +34,10 @@ function AlbumDetails() {
   const year = new Date(state.releasedate).getFullYear()
 
   function handleAlbumPlay() {
+    dispatch(setcurrentPlaylist(data?.trackList))
+  }
+
+  function setPlaylist() {
     dispatch(setcurrentPlaylist(data?.trackList))
   }
 
@@ -62,7 +69,7 @@ function AlbumDetails() {
       </AlbumHead>
       <AlbumtracksDiv>
         {data?.trackList.map((track, index) => (
-          <TrackCard track={track} index={index} key={track.songid} />
+          <TrackCard track={track} index={index} key={track.songid} setPlaylist={setPlaylist} />
         ))}
       </AlbumtracksDiv>
     </AlbumMain>

@@ -298,6 +298,20 @@ img {
 	cursor: pointer;
 }
 
+.pause_button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	max-width: max-content;
+	background-color: var(--primary-color2);
+	padding: 0.8rem;
+	border: none;
+	border-radius: 50%;
+	margin-top: 11rem;
+	margin-right: 1rem;
+	cursor: pointer;
+}
+
 .page_head_text {
 	max-width: 900px;
 	font-size: 1rem;
