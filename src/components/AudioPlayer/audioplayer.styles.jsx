@@ -11,7 +11,10 @@ export const AudioPlayerMain = styled('div')(({ theme }) => ({
 }))
 
 export const AudioPlayerComponent = styled('div')(({ theme }) => ({
-  display: 'flex'
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  columnGap: '5rem'
 }))
 
 
@@ -45,10 +48,16 @@ export const PlayerButtonsComponent = styled('div')(({ theme }) => ({
 }))
 
 export const SongDetails = styled('div')(({ theme }) => ({
-  display: 'flex'
+  display: 'flex',
+  alignItems: 'center',
+  columnGap: '0.5rem'
 }))
 
 export const ImgaeDiv = styled('div')(({ theme }) => ({
   width: '70px',
   height: '70px'
+}))
+
+export const SongText = styled('div')(({ theme }) => ({
+  color: Colors.quaternary
 }))
