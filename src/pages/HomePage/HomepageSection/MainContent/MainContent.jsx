@@ -66,7 +66,7 @@ function MainContent() {
           {menubar.map((menu) => (
             <NavLink to={menu.route} className={({ isActive }) =>
               isActive ? 'nav_link_active' : 'nav_link'
-            }>
+            } key={menu.name}>
               <MenuItem>
                 {menu.ico}
                 <p>{menu.name}</p>

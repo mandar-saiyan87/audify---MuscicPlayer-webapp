@@ -22,7 +22,10 @@ const HomePageView = styled('div')(({ theme, playState }) => ({
   height: '100vh',
   margin: 'auto',
   padding: '0.5rem',
-  paddingBottom: playState && '7rem'
+  paddingBottom: playState && '7rem',
+  [theme.breakpoints.down('sm')]: {
+    paddingBottom: playState && '10rem',
+  }
 }))
 
 const AudioPlayerContainer = styled('div')({
@@ -44,7 +47,7 @@ function Homepage() {
         <Menubar />
         <MainContent />
       </HomePageView>
-      {playlist.length > 0 && <AudioPlayerContainer>
+      {playlist?.length > 0 && <AudioPlayerContainer>
         <AudioPlayer />
       </AudioPlayerContainer>}
 

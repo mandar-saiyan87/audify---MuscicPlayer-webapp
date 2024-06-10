@@ -18,7 +18,7 @@ function Menubar() {
           {menubar.map((menu) => (
             <NavLink to={menu.route} className={({ isActive }) =>
               isActive ? 'nav_link_active' : 'nav_link'
-            }>
+            } key={menu.name}>
               <MenuItem>
                 {menu.ico}
                 <p>{menu.name}</p>
@@ -29,10 +29,10 @@ function Menubar() {
         <Playlist>
           <PlaylistHead>
             <PlaylistTitle>
-              <VscLibrary size={22} color='#8392A7'/>
+              <VscLibrary size={22} color='#8392A7' />
               <p className='library_head_title'>Your Library</p>
             </PlaylistTitle>
-            <HiPlus color='#8392A7'/>
+            <HiPlus color='#8392A7' />
           </PlaylistHead>
           <CreatePlaylist>
             <p className='create_playlist'>Create your playlist</p>

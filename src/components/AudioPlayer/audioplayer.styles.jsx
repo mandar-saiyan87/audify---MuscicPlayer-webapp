@@ -14,7 +14,11 @@ export const AudioPlayerComponent = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  columnGap: '5rem'
+  columnGap: '5rem',
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column',
+    rowGap: '2rem'
+  }
 }))
 
 
