@@ -275,7 +275,7 @@ img {
 	width: 100%;
 	height: 200px;
 	border-radius: 0.3rem;
-	object-fit: fill;
+	object-fit: cover;
 }
 
 
@@ -341,8 +341,14 @@ img {
 .track_card_img {
 	width: 100px;
 	height: 85px;
-	object-fit: fill;
+	object-fit: cover;
 	border-radius: 0.3rem;
+}
+
+.player_track_image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .track_title {

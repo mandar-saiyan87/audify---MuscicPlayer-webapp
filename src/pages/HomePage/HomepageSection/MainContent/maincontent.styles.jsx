@@ -3,7 +3,7 @@ import { Colors } from '../../../../assets/constants'
 
 
 export const ContentDiv = styled('div')(({ theme }) => ({
-  flex: '80%',
+  flex: '1',
   height: '100%',
   marginLeft: '0.5rem',
   borderRadius: '0.3rem',

@@ -59,7 +59,7 @@ export const SongDetails = styled('div')(({ theme }) => ({
 
 export const ImgaeDiv = styled('div')(({ theme }) => ({
   width: '70px',
-  height: '70px'
+  height: '70px',
 }))
 
 export const SongText = styled('div')(({ theme }) => ({

@@ -18,9 +18,6 @@ import TrackCard from '../../components/TrackCard/TrackCard'
 
 function AlbumDetails() {
 
-  const albumPlaying = useSelector((state) => state.appdata.albumPlaying)
-
-
   const bgcolor = getRandomColor()
 
   const albumId = useParams()
@@ -29,7 +26,7 @@ function AlbumDetails() {
 
   const dispatch = useDispatch()
 
-  const { data, error, isLoading } = useGetSongsbyalbumQuery(albumId.albumid)
+  const { data, error, isLoading } = useGetSongsbyalbumQuery(state.albumid)
 
   const year = new Date(state.releasedate).getFullYear()
 

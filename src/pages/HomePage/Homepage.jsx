@@ -19,7 +19,7 @@ const AppContainer = styled('div')(({ theme }) => ({
 const HomePageView = styled('div')(({ theme, playState }) => ({
   width: '100%',
   display: 'flex',
-  height: '100vh',
+  height: playState ? '90vh' : '100vh',
   margin: 'auto',
   padding: '0.5rem',
   paddingBottom: playState && '7rem',
@@ -30,7 +30,7 @@ const HomePageView = styled('div')(({ theme, playState }) => ({
 
 const AudioPlayerContainer = styled('div')({
   width: '100%',
-  position: 'fixed',
+  position: 'absolute',
   bottom: 0,
   backgroundColor: 'black',
   zIndex: 1000,

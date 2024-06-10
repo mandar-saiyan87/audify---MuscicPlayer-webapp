@@ -18,15 +18,14 @@ export const ArtsistsContainer = styled('div')(({ theme }) => ({
   display: 'flex',
   flexWrap: 'wrap',
   alignItems: 'center',
-  gap: '2.2rem',
+  justifyContent: 'start',
+  rowGap: '1rem',
+  columnGap: '2rem',
   [theme.breakpoints.down('md')]: {
-    gap: '1.5rem',
+    columnGap: '1.5rem',
   },
   [theme.breakpoints.down('sm')]: {
-    gap: '2.2rem',
+    columnGap: '1.4rem',
   }
 }))
 
-export const CardContainer = styled('div')(({ theme }) => ({
-
-}))

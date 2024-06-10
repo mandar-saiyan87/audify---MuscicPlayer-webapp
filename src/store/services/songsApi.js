@@ -11,6 +11,7 @@ export const songsApi = createApi({
     getGenres: builder.query({ query: () => `/genres` }),
     getSongsbyalbum: builder.query({ query: (albumid) => `/tracksbyalbum/${albumid}` }),
     getSongsbyid: builder.query({ query: (trackid) => `/tracksbyid/${trackid}` }),
+    getSongsbyartist: builder.query({ query: (artistsid) => `/tracksbyartist/${artistsid}` }),
   })
 })
 
@@ -21,5 +22,6 @@ export const {
   useGetCategoriesQuery,
   useGetGenresQuery,
   useGetSongsbyalbumQuery,
-  useGetSongsbyidQuery
+  useGetSongsbyidQuery,
+  useGetSongsbyartistQuery
 } = songsApi

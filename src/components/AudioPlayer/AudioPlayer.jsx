@@ -92,7 +92,7 @@ function AudioPlayer() {
       <AudioPlayerComponent>
         <SongDetails>
           <ImgaeDiv>
-            <img src={currentTracks[trackIndex].imageurl} alt="track_image" />
+            <img src={currentTracks[trackIndex].imageurl} alt="track_image" className='player_track_image'/>
           </ImgaeDiv>
           <SongText>
             <p className='track_title'>{currentTracks[trackIndex].title}</p>

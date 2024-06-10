@@ -5,7 +5,7 @@ export const Appmenu = styled('div')(({ theme }) => ({
   backgroundColor: 'black',
   display: 'flex',
   flexDirection: 'column',
-  width: '25vw',
+  width: '20vw',
   height: '100%',
   padding: '1.5rem 0',
   [theme.breakpoints.down('md')]: {
