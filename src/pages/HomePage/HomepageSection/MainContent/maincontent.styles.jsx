@@ -18,9 +18,13 @@ export const ContentDiv = styled('div')(({ theme }) => ({
 
 
 export const Contentheader = styled('div')(({ theme }) => ({
+  position: 'sticky',
+  top: '0',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
+  backgroundColor: Colors.secondary,
+  zIndex: '1000',
   [theme.breakpoints.down('sm')]: {
     padding: '0.2rem'
   }
@@ -84,3 +88,4 @@ export const AuthDiv = styled('div')(({ theme }) => ({
     padding: '0.4rem 0'
   },
 }))
+

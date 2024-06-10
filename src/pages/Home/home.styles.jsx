@@ -15,7 +15,7 @@ export const SelectionTab = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'start',
   gap: '1rem',
-  marginBottom: '2rem'
+  marginBottom: '1.5rem'
 }))
 
 export const Select = styled('div')(({ theme, active }) => ({

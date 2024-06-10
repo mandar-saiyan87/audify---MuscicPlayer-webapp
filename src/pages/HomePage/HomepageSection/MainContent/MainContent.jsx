@@ -9,7 +9,8 @@ import {
   Playlist,
   PlaylistHead,
   PlaylistTitle,
-  CreatePlaylist
+  CreatePlaylist,
+  OutletDiv
 } from './maincontent.styles'
 import Drawer from '@mui/material/Drawer';
 import { useMediaQuery } from '@mui/material';
@@ -52,7 +53,7 @@ function MainContent() {
             <button className='log_in_btn'>Log In</button>
           </AuthDiv>
         </Contentheader>
-        <Outlet />
+          <Outlet />
       </ContentDiv>
       <Drawer open={menuDrawer} onClose={() => toggleMenuDrawer(false)} SlideProps={{
         sx: {
