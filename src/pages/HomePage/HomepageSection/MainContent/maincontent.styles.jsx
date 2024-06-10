@@ -22,6 +22,9 @@ export const Contentheader = styled('div')(({ theme }) => ({
   justifyContent: 'space-between',
   backgroundColor: Colors.secondary,
   zIndex: '1000',
+  [theme.breakpoints.down('sm')]: {
+    top: '-1px'
+  }
 }))
 
 export const MenuDiv = styled('div')({
