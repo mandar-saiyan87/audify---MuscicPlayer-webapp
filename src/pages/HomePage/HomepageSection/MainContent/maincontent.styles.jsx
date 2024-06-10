@@ -11,9 +11,6 @@ export const ContentDiv = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     marginLeft: '0',
   },
-  [theme.breakpoints.down('sm')]: {
-    padding: '0.5rem 0',
-  }
 }))
 
 
@@ -25,9 +22,6 @@ export const Contentheader = styled('div')(({ theme }) => ({
   justifyContent: 'space-between',
   backgroundColor: Colors.secondary,
   zIndex: '1000',
-  [theme.breakpoints.down('sm')]: {
-    padding: '0.2rem'
-  }
 }))
 
 export const MenuDiv = styled('div')({
