@@ -32,36 +32,36 @@ function TopAlbums() {
       </SectionHeader>
       <Swiper
         slidesPerView={6}
-        spaceBetween={15}
+        spaceBetween={6}
         freeMode
         modules={[FreeMode]}
         className='swiper_main'
         breakpoints={{
           1200: {
             slidesPerView: 4.5,
-            spaceBetween: 15
+            spaceBetween: 6
           },
 
           1024: {
             slidesPerView: 3.5,
-            spaceBetween: 15
+            spaceBetween: 6
           },
           768: {
             slidesPerView: 3,
-            spaceBetween: 15
+            spaceBetween: 6
           },
           575: {
             slidesPerView: 2.5,
-            spaceBetween: 15
+            spaceBetween: 6
           },
           320: {
             slidesPerView: 1.5,
-            spaceBetween: 15
+            spaceBetween: 6
           }
         }}
       >
         {data?.albumsList.slice(0, 5).map((album) => (
-          <SwiperSlide key={album.albumid} style={{ maxWidth: '300px' }}>
+          <SwiperSlide key={album.albumid} style={{ maxWidth: '250px' }}>
             <AlbumCard carddetails={album} />
           </SwiperSlide>
         ))}
