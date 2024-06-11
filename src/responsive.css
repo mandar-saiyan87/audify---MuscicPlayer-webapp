@@ -39,6 +39,20 @@
     object-fit: fill;
     border-radius: 0.3rem;
   }
+
+  .play_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: max-content;
+    background-color: var(--primary-color2);
+    padding: 0.8rem;
+    border: none;
+    border-radius: 50%;
+    margin-top: 0;
+    margin-right: 1rem;
+    cursor: pointer;
+  }
 }
 
 @media (max-width: 375px) {}

@@ -8,12 +8,13 @@ import {
   SeekBarDuration,
   SongDetails,
   ImgaeDiv,
-  SongText
+  SongText,
 } from './audioplayer.styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearPlayer, setCurrentTrackIndex, setcurrentPlaylist } from '../../store/dataSlice'
 import { FaPlay, FaPause, FaStepForward, FaStepBackward } from "react-icons/fa";
 import { formatTime } from '../../utils/formatDuration';
+import { PiMicrophoneStageFill } from "react-icons/pi";
 
 function AudioPlayer() {
 
@@ -92,7 +93,7 @@ function AudioPlayer() {
       <AudioPlayerComponent>
         <SongDetails>
           <ImgaeDiv>
-            <img src={currentTracks[trackIndex].imageurl} alt="track_image" className='player_track_image'/>
+            <img src={currentTracks[trackIndex].imageurl} alt="track_image" className='player_track_image' />
           </ImgaeDiv>
           <SongText>
             <p className='track_title'>{currentTracks[trackIndex].title}</p>
@@ -120,12 +121,14 @@ function AudioPlayer() {
               <span>{formatTime(currentTime)}</span> / <span>{formatTime(duration)}</span>
             </SeekBarDuration>
           </SeekBarComponent>
+
           <PlayerButtonsComponent>
-            <button className='player_controls' onClick={playPrev}><FaStepBackward /></button>
-            <button className='player_controls' onClick={playpause}>{isPlaying ? <FaPause /> : <FaPlay />}</button>
-            <button className='player_controls' onClick={playNext}><FaStepForward /></button>
+              <button className='player_controls' onClick={playPrev}><FaStepBackward /></button>
+              <button className='player_controls' onClick={playpause}>{isPlaying ? <FaPause /> : <FaPlay />}</button>
+              <button className='player_controls' onClick={playNext}><FaStepForward /></button>
           </PlayerButtonsComponent>
         </Player>
+        <PiMicrophoneStageFill />
       </AudioPlayerComponent>
     </AudioPlayerMain>
   )

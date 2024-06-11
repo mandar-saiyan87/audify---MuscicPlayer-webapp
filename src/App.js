@@ -13,6 +13,7 @@ import Artists from "./pages/Artists/Artists";
 import AlbumDetails from "./pages/AlbumDetails/AlbumDetails";
 import ArtistsDetails from "./pages/ArtistsDetails/ArtistsDetails";
 import DiscoverCategory from "./pages/DiscoverCategory/DiscoverCategory";
+import GenrePage from "./pages/Genre/GenrePage";
 
 
 let theme = createTheme()
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: '/home/discover/:category',
         element: <DiscoverCategory />
+      },
+      {
+        path: '/home/genre/:genre',
+        element: <GenrePage />
       },
     ]
   }

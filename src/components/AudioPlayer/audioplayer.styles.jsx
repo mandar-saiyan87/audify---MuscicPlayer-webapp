@@ -17,7 +17,7 @@ export const AudioPlayerComponent = styled('div')(({ theme }) => ({
   columnGap: '5rem',
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
-    rowGap: '2rem'
+    rowGap: '1rem'
   }
 }))
 
@@ -51,6 +51,8 @@ export const PlayerButtonsComponent = styled('div')(({ theme }) => ({
   columnGap: '0.8rem'
 }))
 
+
+
 export const SongDetails = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -65,3 +67,4 @@ export const ImgaeDiv = styled('div')(({ theme }) => ({
 export const SongText = styled('div')(({ theme }) => ({
   color: Colors.quaternary
 }))
+

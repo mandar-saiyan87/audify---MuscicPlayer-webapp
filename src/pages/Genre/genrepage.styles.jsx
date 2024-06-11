@@ -2,12 +2,12 @@ import styled from '@emotion/styled'
 import { Colors } from '../../assets/constants'
 
 
-export const AlbumMain = styled('div')(({ theme, bgcolor }) => ({
+export const GenreMain = styled('div')(({ theme, bgcolor }) => ({
   minHeight: '100%',
   background: `linear-gradient(to bottom, ${bgcolor} 10%, rgba(255, 255, 255, 0) 85%)`
 }))
 
-export const AlbumHead = styled('div')(({ theme }) => ({
+export const GenreHead = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'start',
   justifyContent: 'start',
@@ -17,17 +17,16 @@ export const AlbumHead = styled('div')(({ theme }) => ({
   }
 }))
 
-export const AlbumHeadContent = styled('div')(({ theme }) => ({
+export const GenreHeadContent = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'end',
   gap: '1.5rem',
   [theme.breakpoints.down('sm')]: {
     gap: '1rem',
-    alignItems: 'center',
   }
 }))
 
-export const AlbumDetailsDiv = styled('div')(({ theme }) => ({
+export const GenreDetailsDiv = styled('div')(({ theme }) => ({
   color: Colors.quaternary,
   fontSize: '2rem',
   fontWeight: '700',
@@ -36,7 +35,7 @@ export const AlbumDetailsDiv = styled('div')(({ theme }) => ({
   }
 }))
 
-export const AlbumDetailsSub = styled('div')(({ theme }) => ({
+export const GenreDetailsSub = styled('div')(({ theme }) => ({
   fontSize: '0.8rem',
   fontWeight: '600',
   paddingBottom: '0.5rem',
@@ -44,24 +43,30 @@ export const AlbumDetailsSub = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'start',
   gap: '0.7rem',
-  marginTop: '0.2rem',
+  marginTop: '0.5rem',
   [theme.breakpoints.down('sm')]: {
     gap: '0.3rem',
     textAlign: 'center'
   }
 }))
 
-export const Imagediv = styled('div')(({ theme }) => ({
-  maxWidth: '200px',
-  maxHeight: '200px',
+export const Imagediv = styled('div')(({ theme, background }) => ({
+  width: '200px',
+  height: '200px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   borderRadius: '0.3rem',
+  backgroundColor: background,
+  color: Colors.quaternary,
+  fontSize: '1.5rem',
+  fontWeight: '600',
   [theme.breakpoints.down('sm')]: {
-    maxWidth: '150px',
-    maxHeight: '150px',
+
   }
 }))
 
-export const AlbumtracksDiv = styled('div')(({ theme }) => ({
+export const GenretracksDiv = styled('div')(({ theme }) => ({
   maxWidth: '1440px',
   // backgroundColor: 'white',
   margin: '2rem 0',

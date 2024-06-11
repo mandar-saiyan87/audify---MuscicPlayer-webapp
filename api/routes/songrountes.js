@@ -123,7 +123,30 @@ router.get('/genres', async (req, res) => {
   }
 })
 
-router.get('/fromcategories/:category', async (req, res) => {
+router.get('/genres/:genre', async (req, res) => {
+
+  const genre = req.params.genre
+
+  try {
+    const query = genre === 'Other' ?
+      sql`select * from public.songs where genre=${genre} or genre is null or genre=''` :
+      sql`select * from public.songs where genre=${genre}`
+
+    const tracksbygenre = await query;
+    // console.log(tracksbygenre)
+
+    if (tracksbygenre.length > 0) {
+      res.status(200).json({ code: 200, trackList: tracksbygenre, msg: 'Tracks fetched successfully' })
+    } else {
+      res.status(200).json({ code: 200, trackList: [], msg: 'No tracks found' })
+    }
+  } catch (error) {
+    res.status(500).send('Internal server error')
+  }
+})
+
+
+router.get('/categories/:category', async (req, res) => {
 
   const category = req.params.category
 
