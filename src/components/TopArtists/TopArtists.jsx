@@ -29,7 +29,7 @@ function TopArtists() {
         </Link>
       </SectionHeader>
       <Swiper
-        slidesPerView={7}
+        slidesPerView={6}
         spaceBetween={6}
         freeMode
         modules={[FreeMode]}

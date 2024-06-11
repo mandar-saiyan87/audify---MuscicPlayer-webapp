@@ -2,13 +2,12 @@ import styled from '@emotion/styled'
 import { Colors } from '../../assets/constants'
 
 
-export const ArtistMain = styled('div')(({ theme, bgcolor }) => ({
+export const DiscoverMain = styled('div')(({ theme, bgcolor }) => ({
   minHeight: '100%',
-  // backgroundColor: bgcolor
   background: `linear-gradient(to bottom, ${bgcolor} 10%, rgba(255, 255, 255, 0) 85%)`
 }))
 
-export const ArtistHead = styled('div')(({ theme }) => ({
+export const DiscoverHead = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'start',
   justifyContent: 'start',
@@ -18,7 +17,7 @@ export const ArtistHead = styled('div')(({ theme }) => ({
   }
 }))
 
-export const ArtistHeadContent = styled('div')(({ theme }) => ({
+export const DiscoverHeadContent = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'end',
   gap: '1.5rem',
@@ -27,17 +26,7 @@ export const ArtistHeadContent = styled('div')(({ theme }) => ({
   }
 }))
 
-export const Imagediv = styled('div')(({ theme }) => ({
-  maxWidth: '200px',
-  maxHeight: '200px',
-  borderRadius: '0.3rem',
-  [theme.breakpoints.down('sm')]: {
-    maxWidth: '150px',
-    maxHeight: '150px',
-  }
-}))
-
-export const ArtistDetailsDiv = styled('div')(({ theme }) => ({
+export const DiscoverDetailsDiv = styled('div')(({ theme }) => ({
   color: Colors.quaternary,
   fontSize: '2rem',
   fontWeight: '700',
@@ -46,7 +35,7 @@ export const ArtistDetailsDiv = styled('div')(({ theme }) => ({
   }
 }))
 
-export const ArtistDetailsSub = styled('div')(({ theme }) => ({
+export const DiscoverDetailsSub = styled('div')(({ theme }) => ({
   fontSize: '0.8rem',
   fontWeight: '600',
   paddingBottom: '0.5rem',
@@ -54,14 +43,30 @@ export const ArtistDetailsSub = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'start',
   gap: '0.7rem',
-  marginTop: '0.2rem',
+  marginTop: '0.5rem',
   [theme.breakpoints.down('sm')]: {
     gap: '0.3rem',
-    textAlign: 'center',
+    textAlign: 'center'
   }
 }))
 
-export const ArtisttracksDiv = styled('div')(({ theme }) => ({
+export const Imagediv = styled('div')(({ theme, background }) => ({
+  width: '200px',
+  height: '200px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: '0.3rem',
+  backgroundColor: background,
+  color: Colors.quaternary,
+  fontSize: '1.5rem',
+  fontWeight: '600',
+  [theme.breakpoints.down('sm')]: {
+
+  }
+}))
+
+export const DiscovertracksDiv = styled('div')(({ theme }) => ({
   maxWidth: '1440px',
   // backgroundColor: 'white',
   margin: '2rem 0',
@@ -70,4 +75,3 @@ export const ArtisttracksDiv = styled('div')(({ theme }) => ({
     padding: '0 1rem',
   }
 }))
-

@@ -22,7 +22,7 @@ const HomePageView = styled('div')(({ theme, playState }) => ({
   height: playState ? '90vh' : '100vh',
   margin: 'auto',
   padding: '0.5rem',
-  paddingBottom: playState && '7rem',
+  paddingBottom: playState && '2rem',
   [theme.breakpoints.down('md')]: {
     padding: '0',
   },

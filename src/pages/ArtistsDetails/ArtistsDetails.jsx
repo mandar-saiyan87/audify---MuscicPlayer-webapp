@@ -50,7 +50,7 @@ function ArtistsDetails() {
             <button className='play_button' onClick={handleTracksPlay}>
               <FaPlay color='black' size={20} />
             </button>
-            <p>{state.title}</p>
+            <p>{state.name}</p>
             <ArtistDetailsSub>
               <p>{data?.trackList.length} &nbsp;songs</p>
             </ArtistDetailsSub>

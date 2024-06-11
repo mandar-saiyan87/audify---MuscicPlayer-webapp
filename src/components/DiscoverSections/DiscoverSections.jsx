@@ -9,11 +9,21 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
+import { useNavigate } from 'react-router-dom';
 
 
 function DiscoverSections() {
 
   const { data, error, isLoading } = useGetCategoriesQuery()
+
+  const navigate = useNavigate()
+
+  function goToCategory(category) {
+    navigate(
+      `/home/discover/${category.name}`,
+      { state: category }
+    )
+  }
 
 
   return (
@@ -56,7 +66,7 @@ function DiscoverSections() {
             key={category.categoryid}
             style={{ maxWidth: '250px' }}
           >
-            <Slide color={category.color}>{category.name}</Slide>
+            <Slide color={category.color} onClick={() => goToCategory(category)}>{category.name}</Slide>
           </SwiperSlide>
         ))}
       </Swiper>

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { useParams, useLocation } from 'react-router-dom'
 import { useGetSongsbyalbumQuery } from '../../store/services/songsApi'
 import { setTracks, setcurrentPlaylist } from '../../store/dataSlice'

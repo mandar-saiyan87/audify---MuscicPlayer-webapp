@@ -58,7 +58,6 @@ router.get('/tracksbyartist/:id', async (req, res) => {
 router.get('/tracksbyid/:id', async (req, res) => {
 
   const trackid = req.params.id
-  console.log(trackid)
   try {
     const tracks = await sql`select * from public.songs where songid=${trackid}`
     console.log(tracks)
@@ -118,6 +117,27 @@ router.get('/genres', async (req, res) => {
       res.status(200).json({ code: 200, genreList: genre, msg: 'Genre data fetched successfully' })
     } else {
       res.status(200).json({ code: 200, genreList: [], msg: 'No Genre data added' })
+    }
+  } catch (error) {
+    res.status(500).send('Internal server error')
+  }
+})
+
+router.get('/fromcategories/:category', async (req, res) => {
+
+  const category = req.params.category
+
+  try {
+    const songsbycategory = await sql`select Songs.* from Songs 
+    join SongCategories on Songs.SongID = SongCategories.SongID 
+    join Categories on SongCategories.CategoryID = Categories.CategoryID
+    where Categories.Name = ${category}
+    `
+    // console.log(songsbycategory)
+    if (songsbycategory.length > 0) {
+      res.status(200).json({ code: 200, trackList: songsbycategory, msg: 'Tracks fetched successfully' })
+    } else {
+      res.status(200).json({ code: 200, trackList: [], msg: 'No tracks found' })
     }
   } catch (error) {
     res.status(500).send('Internal server error')

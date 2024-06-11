@@ -26,6 +26,7 @@ export const ArtsistsContainer = styled('div')(({ theme }) => ({
   },
   [theme.breakpoints.down('sm')]: {
     columnGap: '1.4rem',
+    justifyContent: 'center'
   }
 }))
 

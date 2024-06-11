@@ -13,14 +13,6 @@ function TopTracksCard({ carddetails }) {
 
   const [hoverState, setHoverState] = useState()
 
-  function navigateTo() {
-    navigate(
-      `/home/albums/${carddetails.albumid}`,
-      { state: carddetails }
-    )
-  }
-
-  function handleCardClick() { }
 
   function handlePlayClick(e) {
     e.stopPropagation()

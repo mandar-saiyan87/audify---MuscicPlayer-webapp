@@ -44,6 +44,7 @@ export const AlbumDetailsSub = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'start',
   gap: '0.7rem',
+  marginTop: '0.2rem',
   [theme.breakpoints.down('sm')]: {
     gap: '0.3rem',
     textAlign: 'center'
