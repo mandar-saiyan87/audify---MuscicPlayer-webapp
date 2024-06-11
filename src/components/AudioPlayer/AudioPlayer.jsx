@@ -11,7 +11,7 @@ import {
   SongText,
 } from './audioplayer.styles'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearPlayer, setCurrentTrackIndex, setcurrentPlaylist } from '../../store/dataSlice'
+import { clearPlayer, setCurrentTrackIndex, setcurrentPlaylist, setLyrics } from '../../store/dataSlice'
 import { FaPlay, FaPause, FaStepForward, FaStepBackward } from "react-icons/fa";
 import { formatTime } from '../../utils/formatDuration';
 import { PiMicrophoneStageFill } from "react-icons/pi";
@@ -123,12 +123,12 @@ function AudioPlayer() {
           </SeekBarComponent>
 
           <PlayerButtonsComponent>
-              <button className='player_controls' onClick={playPrev}><FaStepBackward /></button>
-              <button className='player_controls' onClick={playpause}>{isPlaying ? <FaPause /> : <FaPlay />}</button>
-              <button className='player_controls' onClick={playNext}><FaStepForward /></button>
+            <button className='player_controls' onClick={playPrev}><FaStepBackward /></button>
+            <button className='player_controls' onClick={playpause}>{isPlaying ? <FaPause /> : <FaPlay />}</button>
+            <button className='player_controls' onClick={playNext}><FaStepForward /></button>
           </PlayerButtonsComponent>
         </Player>
-        <PiMicrophoneStageFill />
+        <PiMicrophoneStageFill color='white' size={22} onClick={() => dispatch(setLyrics())} style={{cursor: 'pointer'}}/>
       </AudioPlayerComponent>
     </AudioPlayerMain>
   )

@@ -18,11 +18,15 @@ import Logo from '../../../../components/Logo';
 import { menubar } from '../../../../assets/constants';
 import { VscLibrary } from "react-icons/vsc";
 import { HiPlus } from "react-icons/hi2";
+import { useSelector } from 'react-redux';
+import LyricsPage from '../../../Lyrics/LyricsPage';
 
 
 
 
 function MainContent() {
+
+  const showLyrics = useSelector((state) => state.appdata.isLyrics)
 
   const matches = useMediaQuery((theme) => theme.breakpoints.between('sm', 'md'));
 
@@ -52,7 +56,7 @@ function MainContent() {
             <button className='log_in_btn'>Log In</button>
           </AuthDiv>
         </Contentheader>
-        <Outlet />
+        {showLyrics ? <LyricsPage /> : <Outlet />}
       </ContentDiv>
       <Drawer open={menuDrawer} onClose={() => toggleMenuDrawer(false)} SlideProps={{
         sx: {
