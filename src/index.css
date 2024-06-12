@@ -180,6 +180,17 @@ img {
 	margin-left: 1rem;
 }
 
+.search_bar {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	padding: 0.5rem;
+	color: var(--quaternary-color);
+	font-size: 1rem;
+	min-width: 300px;
+	max-width: 450px;
+}
+
 
 /************* Titles ******************/
 .library_head_title {
@@ -340,8 +351,8 @@ img {
 /************************** Track Card **************************/
 
 .track_card_img {
-	width: 100px;
-	height: 85px;
+	width: 100%;
+	height: 100%;
 	object-fit: cover;
 	border-radius: 0.3rem;
 }

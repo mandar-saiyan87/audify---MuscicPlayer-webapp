@@ -51,6 +51,7 @@ function MainContent() {
       <ContentDiv>
         <Contentheader>
           <HiMenuAlt2 size={30} className='menu_drawer_button' onClick={() => setmenuDrawer(true)} />
+
           <AuthDiv>
             <button className='sign_up_btn'>Sign Up</button>
             <button className='log_in_btn'>Log In</button>
