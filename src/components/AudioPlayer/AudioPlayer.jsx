@@ -29,7 +29,7 @@ function AudioPlayer() {
   const trackIndex = useSelector((state) => state.appdata.currentTrackIndex)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
-  const [volume, setVolume] = useState(0)
+  // const [volume, setVolume] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
 
   function handleTimeUpdate() {
@@ -78,7 +78,7 @@ function AudioPlayer() {
     setIsPlaying(false)
   }
 
-  const handleEnded = () => {
+  function handleEnded() {
     setIsPlaying(false);
   };
 
@@ -128,7 +128,7 @@ function AudioPlayer() {
             <button className='player_controls' onClick={playNext}><FaStepForward /></button>
           </PlayerButtonsComponent>
         </Player>
-        <PiMicrophoneStageFill color='white' size={22} onClick={() => dispatch(setLyrics())} style={{cursor: 'pointer'}}/>
+        <PiMicrophoneStageFill color='white' size={22} onClick={() => dispatch(setLyrics())} style={{ cursor: 'pointer' }} />
       </AudioPlayerComponent>
     </AudioPlayerMain>
   )

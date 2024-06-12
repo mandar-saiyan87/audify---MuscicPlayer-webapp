@@ -32,6 +32,7 @@ export const dataSlice = createSlice({
     clearPlayer: (state, action) => {
       state.currentPlaylist = []
       state.currentTrackIndex = 0
+      state.isLyrics = false
     },
     setCurrentTrackIndex: (state, action) => {
       state.currentTrackIndex = action.payload

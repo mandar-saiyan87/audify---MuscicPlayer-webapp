@@ -27,7 +27,7 @@ const HomePageView = styled('div')(({ theme, playState }) => ({
     padding: '0',
   },
   [theme.breakpoints.down('sm')]: {
-    paddingBottom: playState && '10rem',
+    paddingBottom: playState && '11.5rem',
   }
 }))
 
