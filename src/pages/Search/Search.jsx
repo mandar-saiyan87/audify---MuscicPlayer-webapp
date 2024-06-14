@@ -115,7 +115,7 @@ function Search() {
         </SearchPageContent>
       }
       {
-        searchResults?.length === 0 &&
+        searchResults?.searchList.length === 0 &&
         <div>No match found</div>
       }
       {searchArtist?.length > 0 &&
