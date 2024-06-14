@@ -40,9 +40,12 @@ export const dataSlice = createSlice({
     },
     setLyrics: (state) => {
       state.isLyrics = !state.isLyrics
+    },
+    setLoggedIn: (state, action) => {
+      state.loggedIn = true
     }
   },
 })
 
-export const { setAlbums, setTracks, setArtists, setcurrentPlaylist, clearPlayer, setCurrentTrackIndex, setLyrics } = dataSlice.actions
+export const { setAlbums, setTracks, setArtists, setcurrentPlaylist, clearPlayer, setCurrentTrackIndex, setLyrics, setLoggedIn } = dataSlice.actions
 export default dataSlice.reducer
