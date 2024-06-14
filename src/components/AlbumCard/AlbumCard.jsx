@@ -9,7 +9,7 @@ function AlbumCard({ carddetails }) {
 
   function navigateTo() {
     navigate(
-      `/home/albums/${carddetails.albumid}`,
+      `/home/albums/${carddetails?.albumid}`,
       { state: carddetails }
     )
   }
@@ -24,10 +24,10 @@ function AlbumCard({ carddetails }) {
       </AlbumOverlay>
       <AlbumDetails>
         <ImgDiv>
-          <img src={carddetails.imageurl} alt="albumimage" className='album_image' />
+          <img src={carddetails?.imageurl} alt="albumimage" className='album_image' />
         </ImgDiv>
-        <p className='album_title'>{carddetails.title}</p>
-        <p className='album_artist'>{carddetails.artistname}</p>
+        <p className='album_title'>{carddetails?.title}</p>
+        <p className='album_artist'>{carddetails?.artistname}</p>
       </AlbumDetails>
     </AlbumCardMain>
   )

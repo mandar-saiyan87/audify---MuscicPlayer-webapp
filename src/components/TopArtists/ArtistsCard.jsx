@@ -8,7 +8,7 @@ function ArtistsCard({ carddetails }) {
 
   function navigateTo() {
     navigate(
-      `/home/artist/${carddetails.artistid}`,
+      `/home/artist/${carddetails?.artistid}`,
       { state: carddetails }
     )
   }
@@ -16,9 +16,9 @@ function ArtistsCard({ carddetails }) {
   return (
     <ArtistsCardMain onClick={navigateTo}>
       <ArtistsCardImage>
-        <img src={carddetails.imageurl} alt="artistsImage" className='artists_image' />
+        <img src={carddetails?.imageurl} alt="artistsImage" className='artists_image' />
       </ArtistsCardImage>
-      <p className='album_title'>{carddetails.name}</p>
+      <p className='album_title'>{carddetails?.name}</p>
     </ArtistsCardMain>
   )
 }

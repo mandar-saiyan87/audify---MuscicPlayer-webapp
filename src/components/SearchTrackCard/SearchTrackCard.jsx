@@ -47,16 +47,16 @@ function SearchTrackCard({ trackdetails }) {
         </SearchTrackid>
         <SearchTrackinfo>
           <SearchTrackImage>
-            <img src={trackdetails[0].imageurl} alt="track_image" className='track_card_img' />
+            <img src={trackdetails[0]?.imageurl} alt="track_image" className='track_card_img' />
           </SearchTrackImage>
           <SearchTrackDetailtext>
-            <p className='track_title'>{trackdetails[0].title}</p>
-            <p className='track_artist'>{trackdetails[0].artistname}</p>
+            <p className='track_title'>{trackdetails[0]?.title}</p>
+            <p className='track_artist'>{trackdetails[0]?.artistname}</p>
           </SearchTrackDetailtext>
         </SearchTrackinfo>
       </SearchTrackDetails>
       <SearchTrackruntime>
-        <p>{Duration(trackdetails[0].duration)}</p>
+        <p>{Duration(trackdetails[0]?.duration)}</p>
       </SearchTrackruntime>
     </SearchTrackCardMain>
   )
