@@ -167,4 +167,29 @@ router.get('/categories/:category', async (req, res) => {
   }
 })
 
+router.get('/searching/:search', async (req, res) => {
+
+  const searchText = req.params.search
+
+  try {
+    const searchResults = await sql`
+    select 'song' as type, songid as id, title as name, mp3url as url from songs where title ILIKE ${'%' + searchText + '%'}
+    UNION ALL
+
+    SELECT 'artist' AS type, artistid AS id, name AS name, Null AS url FROM artists WHERE name ILIKE ${'%' + searchText + '%'}
+    UNION ALL
+
+    SELECT 'album' AS type, albumid AS id, title AS name, NULL AS url FROM albums WHERE title ILIKE ${'%' + searchText + '%'}
+    `
+    if (searchResults.length > 0) {
+      res.status(200).json({ code: 200, searchList: searchResults, msg: 'Search data fetched successfully' })
+    } else {
+      res.status(200).json({ code: 200, searchList: [], msg: 'No match found' })
+    }
+  } catch (error) {
+    console.log(error)
+    res.status(500).send('Internal server error')
+  }
+})
+
 export default router;
