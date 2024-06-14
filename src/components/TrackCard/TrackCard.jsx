@@ -10,20 +10,27 @@ import {
 } from './trackcard.styles'
 import { FaPlay } from "react-icons/fa6";
 import { setCurrentTrackIndex } from '../../store/dataSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function TrackCard({ track, index, setPlaylist }) {
+
+  const isLoggedIn = useSelector((state) => state.appdata.loggedIn)
 
   const [hoverState, setHoverState] = useState(false)
 
   const dispatch = useDispatch()
 
+  const navigate = useNavigate()
 
   const Duration = (duration) => {
     return duration.substring(0, 5); // Extracts the first 5 characters (MM:SS)
   };
 
   function handleClick() {
+    if (!isLoggedIn) {
+      navigate('/login')
+    }
     setPlaylist()
     dispatch(setCurrentTrackIndex(index))
   }

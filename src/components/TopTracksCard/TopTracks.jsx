@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { TopTracksCardMain, TrackDetails, Overlay, ImgDiv } from './toptracks.styles'
 import { FaPlay } from "react-icons/fa6";
 import { setcurrentPlaylist } from '../../store/dataSlice';
 
 function TopTracksCard({ carddetails }) {
 
+  const isLoggedIn = useSelector((state) => state.appdata.loggedIn)
+
   const navigate = useNavigate()
+
 
   const dispatch = useDispatch()
 
@@ -16,6 +19,9 @@ function TopTracksCard({ carddetails }) {
 
   function handlePlayClick(e) {
     e.stopPropagation()
+    if (!isLoggedIn) {
+      navigate('/login')
+    }
     dispatch(setcurrentPlaylist([carddetails]))
   }
 

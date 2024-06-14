@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import {
   GenreMain,
   GenreDetailsDiv,
@@ -13,10 +13,14 @@ import { useGetSongsbygenreQuery } from '../../store/services/songsApi'
 import { getRandomColor } from '../../utils/generatecolor'
 import { FaPlay } from "react-icons/fa6";
 import TrackCard from '../../components/TrackCard/TrackCard'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setcurrentPlaylist, setTracks } from '../../store/dataSlice'
 
 function GenrePage() {
+
+  const isLoggedin = useSelector((state) => state.appdata.loggedIn)
+
+  const navigate = useNavigate()
 
   const { genre } = useParams()
   const bgcolor = getRandomColor()
@@ -26,7 +30,12 @@ function GenrePage() {
   const { data, error, isLoading } = useGetSongsbygenreQuery(genre)
 
   function handleAlbumPlay() {
-    dispatch(setcurrentPlaylist(data?.trackList))
+    if (!isLoggedin) {
+      navigate('/login')
+    } else { 
+      dispatch(setcurrentPlaylist(data?.trackList))
+    }
+    
   }
 
   function setPlaylist() {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaPlay } from "react-icons/fa6";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setcurrentPlaylist } from '../../store/dataSlice';
 import {
   SearchTrackCardMain,
@@ -11,10 +11,14 @@ import {
   SearchTrackDetailtext,
   SearchTrackruntime,
 } from './searchtrackcard.styles';
+import { useNavigate } from 'react-router-dom';
 
 
 function SearchTrackCard({ trackdetails }) {
 
+  const isLogedIn = useSelector((state) => state.appdata.loggedIn)
+
+  const navigate = useNavigate()
 
   const [hoverState, setHoverState] = useState(false)
 
@@ -25,6 +29,9 @@ function SearchTrackCard({ trackdetails }) {
   };
 
   function handlePlayClick() {
+    if (!isLogedIn) {
+      navigate('/login')
+    }
     dispatch(setcurrentPlaylist(trackdetails))
   }
 

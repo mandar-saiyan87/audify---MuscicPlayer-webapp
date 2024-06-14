@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import {
   ArtistMain,
   ArtistHead,
@@ -18,6 +18,9 @@ import TrackCard from '../../components/TrackCard/TrackCard'
 
 function ArtistsDetails() {
 
+  const isLoggedIn = useSelector((state) => state.appdata.loggedIn)
+  const navigate = useNavigate()
+
   const { state } = useLocation()
   const dispatch = useDispatch()
 
@@ -26,6 +29,9 @@ function ArtistsDetails() {
   const { data, error, isLoading } = useGetSongsbyartistQuery(state.artistid)
 
   function handleTracksPlay() {
+    if (!isLoggedIn) {
+      navigate('/login')
+    }
     dispatch(setcurrentPlaylist(data?.trackList))
   }
 

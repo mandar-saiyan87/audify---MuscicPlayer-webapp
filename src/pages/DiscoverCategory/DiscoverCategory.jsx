@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { getRandomColor } from '../../utils/generatecolor'
 import {
   DiscoverMain,
@@ -16,7 +16,12 @@ import { useGetSongsbycategoryQuery } from '../../store/services/songsApi'
 import TrackCard from '../../components/TrackCard/TrackCard'
 import { setcurrentPlaylist, setTracks } from '../../store/dataSlice'
 
+
 function DiscoverCategory() {
+
+  const isLogedIn = useSelector((state) => state.appdata.loggedIn)
+
+  const navigate = useNavigate()
 
   const dispatch = useDispatch()
 
@@ -26,7 +31,11 @@ function DiscoverCategory() {
   const { data, error, isLoading } = useGetSongsbycategoryQuery(state.name)
 
   function handleAlbumPlay() {
-    dispatch(setcurrentPlaylist(data?.trackList))
+    if (!isLogedIn) {
+      navigate('/login')
+    } else {
+      dispatch(setcurrentPlaylist(data?.trackList))
+    }
   }
 
   function setPlaylist() {

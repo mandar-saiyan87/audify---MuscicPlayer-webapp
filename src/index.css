@@ -227,7 +227,7 @@ img {
 	background-color: transparent;
 	color: var(--defaulttext-color);
 	border: none;
-	font-size: 1.1rem;
+	font-size: 1rem;
 	font-weight: 700;
 	cursor: pointer;
 	transform: transition 0.3s ease;
@@ -423,7 +423,7 @@ img {
 	width: 100%;
 	background-color: transparent;
 	border: 1px solid var(--defaulttext-color);
-	padding: 0.6rem 1rem;
+	padding: 0.7rem 1rem;
 	color: var(--quaternary-color);
 	border-radius: 0.2rem;
 }
@@ -433,7 +433,7 @@ img {
 	background-color: transparent;
 	border: none;
 	outline: none;
-	padding: 0.6rem 0;
+	padding: 0.7rem 0;
 	color: var(--quaternary-color);
 }
 

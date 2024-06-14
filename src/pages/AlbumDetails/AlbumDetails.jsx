@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { useParams, useLocation } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams, useLocation, useNavigate } from 'react-router-dom'
 import { useGetSongsbyalbumQuery } from '../../store/services/songsApi'
 import { setTracks, setcurrentPlaylist } from '../../store/dataSlice'
 import { getRandomColor } from '../../utils/generatecolor'
@@ -18,6 +18,10 @@ import TrackCard from '../../components/TrackCard/TrackCard'
 
 function AlbumDetails() {
 
+  const isLoggedIn = useSelector((state) => state.appdata.loggedIn)
+
+  const navigate = useNavigate()
+
   const bgcolor = getRandomColor()
 
   const albumId = useParams()
@@ -31,7 +35,11 @@ function AlbumDetails() {
   const year = new Date(state.releasedate).getFullYear()
 
   function handleAlbumPlay() {
-    dispatch(setcurrentPlaylist(data?.trackList))
+    if (!isLoggedIn) {
+      navigate('/login')
+    } else { 
+      dispatch(setcurrentPlaylist(data?.trackList))
+    }
   }
 
   function setPlaylist() {
