@@ -14,6 +14,8 @@ import AlbumDetails from "./pages/AlbumDetails/AlbumDetails";
 import ArtistsDetails from "./pages/ArtistsDetails/ArtistsDetails";
 import DiscoverCategory from "./pages/DiscoverCategory/DiscoverCategory";
 import GenrePage from "./pages/Genre/GenrePage";
+import Login from "./pages/AuthPage/Login";
+import SignUp from "./pages/AuthPage/SignUp";
 
 
 let theme = createTheme()
@@ -61,7 +63,15 @@ const router = createBrowserRouter([
         path: '/home/genre/:genre',
         element: <GenrePage />
       },
-    ]
+    ],
+  },
+  {
+    path: '/login',
+    element: <Login />
+  },
+  {
+    path: '/signup',
+    element: <SignUp />
   }
 ])
 

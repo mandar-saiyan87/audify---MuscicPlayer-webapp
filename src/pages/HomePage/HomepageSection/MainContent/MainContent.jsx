@@ -20,6 +20,7 @@ import { VscLibrary } from "react-icons/vsc";
 import { HiPlus } from "react-icons/hi2";
 import { useSelector } from 'react-redux';
 import LyricsPage from '../../../Lyrics/LyricsPage';
+import { Link } from 'react-router-dom';
 
 
 
@@ -53,8 +54,12 @@ function MainContent() {
           <HiMenuAlt2 size={30} className='menu_drawer_button' onClick={() => setmenuDrawer(true)} />
 
           <AuthDiv>
-            <button className='sign_up_btn'>Sign Up</button>
-            <button className='log_in_btn'>Log In</button>
+            <Link to={`/signup`}>
+              <button className='sign_up_btn'>Sign Up</button>
+            </Link>
+            <Link to={`/login`}>
+              <button className='log_in_btn'>Log In</button>
+            </Link>
           </AuthDiv>
         </Contentheader>
         {showLyrics ? <LyricsPage /> : <Outlet />}

@@ -10,12 +10,12 @@ import {
   SearchTrackImage,
   SearchTrackDetailtext,
   SearchTrackruntime,
- } from './searchtrackcard.styles';
+} from './searchtrackcard.styles';
 
 
 function SearchTrackCard({ trackdetails }) {
 
-  
+
   const [hoverState, setHoverState] = useState(false)
 
   const dispatch = useDispatch()

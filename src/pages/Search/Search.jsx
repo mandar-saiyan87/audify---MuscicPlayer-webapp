@@ -147,7 +147,7 @@ function Search() {
           {searchSongs?.map((track, index) => {
             const trackData = tracks.filter((data) => data.songid === track.id)
             return (
-              <SearchTrackCard trackdetails={trackData} />
+              <SearchTrackCard trackdetails={trackData} key={track.id} />
             )
           })}
         </ResultTracks>

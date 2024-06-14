@@ -192,6 +192,7 @@ img {
 }
 
 
+
 /************* Titles ******************/
 .library_head_title {
 	font-size: 1rem;
@@ -407,6 +408,71 @@ img {
 	min-width: 300px;
 	max-width: 400px;
 	background-color: var(--defaulttext-color);
+}
+
+/* ************************ Login ****************************/
+.input_label {
+	font-size: 1rem;
+	font-weight: 500;
+	color: var(--quaternary-color);
+	margin-top: 1.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.input_area {
+	width: 100%;
+	background-color: transparent;
+	border: 1px solid var(--defaulttext-color);
+	padding: 0.6rem 1rem;
+	color: var(--quaternary-color);
+	border-radius: 0.2rem;
+}
+
+.password_area {
+	width: 100%;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	padding: 0.6rem 0;
+	color: var(--quaternary-color);
+}
+
+.password-btn {
+	cursor: pointer;
+}
+
+.auth_btn {
+	max-width: 90%;
+	width: 100%;
+	padding: 0.9rem;
+	font-size: 1rem;
+	font-weight: 700;
+	margin: 2rem 0;
+	background-color: var(--primary-color);
+	border: none;
+	border-radius: 1.5rem;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.auth_btn:hover {
+	transform: scale(1.04);
+}
+
+.have_account {
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: var(--defaulttext-color);
+	margin: 1rem 0;
+}
+
+.have_account span {
+	color: var(--quaternary-color);
+}
+
+.have_account span:hover {
+	color: var(--primary-color);
+	cursor: pointer;
 }
 
 /*********************  Default-CSS  End *********************/
