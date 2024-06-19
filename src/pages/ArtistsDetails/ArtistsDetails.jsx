@@ -53,7 +53,7 @@ function ArtistsDetails() {
             <img src={state.imageurl} alt="artist_img" className='album_details_image' />
           </Imagediv>
           <ArtistDetailsDiv>
-            <button className='play_button' onClick={handleTracksPlay}>
+            <button className='details_play_button' onClick={handleTracksPlay}>
               <FaPlay color='black' size={20} />
             </button>
             <p>{state.name}</p>

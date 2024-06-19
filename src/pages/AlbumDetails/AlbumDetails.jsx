@@ -37,7 +37,7 @@ function AlbumDetails() {
   function handleAlbumPlay() {
     if (!isLoggedIn) {
       navigate('/login')
-    } else { 
+    } else {
       dispatch(setcurrentPlaylist(data?.trackList))
     }
   }
@@ -58,7 +58,7 @@ function AlbumDetails() {
             <img src={state.imageurl} alt="album_img" className='album_details_image' />
           </Imagediv>
           <AlbumDetailsDiv>
-            <button className='play_button' onClick={handleAlbumPlay}>
+            <button className='details_play_button' onClick={handleAlbumPlay}>
               <FaPlay color='black' size={20} />
             </button>
             <p>{state.title}</p>

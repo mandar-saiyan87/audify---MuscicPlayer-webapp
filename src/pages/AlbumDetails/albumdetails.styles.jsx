@@ -22,8 +22,11 @@ export const AlbumHeadContent = styled('div')(({ theme }) => ({
   alignItems: 'end',
   gap: '1.5rem',
   [theme.breakpoints.down('sm')]: {
-    gap: '1rem',
-    alignItems: 'center',
+    // gap: '1rem',
+    // alignItems: 'center',
+    flexDirection: 'column',
+    alignItems: 'start',
+    gap: '0'
   }
 }))
 
@@ -56,8 +59,8 @@ export const Imagediv = styled('div')(({ theme }) => ({
   maxHeight: '200px',
   borderRadius: '0.3rem',
   [theme.breakpoints.down('sm')]: {
-    maxWidth: '150px',
-    maxHeight: '150px',
+    // maxWidth: '150px',
+    // maxHeight: '150px',
   }
 }))
 
