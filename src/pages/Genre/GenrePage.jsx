@@ -18,7 +18,7 @@ import { setcurrentPlaylist, setTracks } from '../../store/dataSlice'
 
 function GenrePage() {
 
-  const isLoggedin = useSelector((state) => state.appdata.loggedIn)
+  const isLoggedin = useSelector((state) => state.user.loggedinUser)
 
   const navigate = useNavigate()
 

@@ -8,7 +8,6 @@ const initialState = {
   currentPlaylist: [],
   currentTrackIndex: 0,
   isLyrics: false,
-  loggedIn: false
 }
 
 

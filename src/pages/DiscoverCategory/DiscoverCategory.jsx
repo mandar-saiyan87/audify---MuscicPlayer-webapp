@@ -19,7 +19,7 @@ import { setcurrentPlaylist, setTracks } from '../../store/dataSlice'
 
 function DiscoverCategory() {
 
-  const isLogedIn = useSelector((state) => state.appdata.loggedIn)
+  const isLogedIn = useSelector((state) => state.user.loggedinUser)
 
   const navigate = useNavigate()
 

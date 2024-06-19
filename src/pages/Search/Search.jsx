@@ -121,7 +121,7 @@ function Search() {
       {searchArtist?.length > 0 &&
         <ArtsistsContainer>
           {searchArtist?.map((artist) => {
-            const artistData = artists.filter((data) => data.artistid === artist.id)
+            const artistData = artists?.filter((data) => data.artistid === artist.id)
             return (
               <ArtistsCard carddetails={artistData[0]} key={artist.id} />
             )
@@ -132,7 +132,7 @@ function Search() {
         searchAlbum?.length > 0 &&
         <ResultAlbum>
           {searchAlbum?.map((album) => {
-            const albumData = albums.filter((data) => data.albumid === album.id)
+            const albumData = albums?.filter((data) => data.albumid === album.id)
             return (
               <CardContainer key={album.id}>
                 <AlbumCard carddetails={albumData[0]} />
@@ -145,7 +145,7 @@ function Search() {
         searchSongs?.length > 0 &&
         <ResultTracks>
           {searchSongs?.map((track, index) => {
-            const trackData = tracks.filter((data) => data.songid === track.id)
+            const trackData = tracks?.filter((data) => data.songid === track.id)
             return (
               <SearchTrackCard trackdetails={trackData} key={track.id} />
             )

@@ -7,7 +7,7 @@ import { setcurrentPlaylist } from '../../store/dataSlice';
 
 function TopTracksCard({ carddetails }) {
 
-  const isLoggedIn = useSelector((state) => state.appdata.loggedIn)
+  const isLoggedIn = useSelector((state) => state.user.loggedinUser)
 
   const navigate = useNavigate()
 

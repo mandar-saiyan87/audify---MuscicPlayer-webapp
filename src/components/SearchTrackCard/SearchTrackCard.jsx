@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router-dom';
 
 function SearchTrackCard({ trackdetails }) {
 
-  const isLogedIn = useSelector((state) => state.appdata.loggedIn)
+  const isLogedIn = useSelector((state) => state.user.loggedinUser)
 
   const navigate = useNavigate()
 
@@ -31,8 +31,9 @@ function SearchTrackCard({ trackdetails }) {
   function handlePlayClick() {
     if (!isLogedIn) {
       navigate('/login')
+    } else {
+      dispatch(setcurrentPlaylist(trackdetails))
     }
-    dispatch(setcurrentPlaylist(trackdetails))
   }
 
   return (

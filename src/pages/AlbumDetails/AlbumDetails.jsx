@@ -18,7 +18,7 @@ import TrackCard from '../../components/TrackCard/TrackCard'
 
 function AlbumDetails() {
 
-  const isLoggedIn = useSelector((state) => state.appdata.loggedIn)
+  const isLoggedIn = useSelector((state) => state.user.loggedinUser)
 
   const navigate = useNavigate()
 

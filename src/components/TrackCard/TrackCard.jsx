@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 
 function TrackCard({ track, index, setPlaylist }) {
 
-  const isLoggedIn = useSelector((state) => state.appdata.loggedIn)
+  const isLoggedIn = useSelector((state) => state.user.loggedinUser)
 
   const [hoverState, setHoverState] = useState(false)
 
@@ -30,9 +30,10 @@ function TrackCard({ track, index, setPlaylist }) {
   function handleClick() {
     if (!isLoggedIn) {
       navigate('/login')
+    } else {
+      setPlaylist()
+      dispatch(setCurrentTrackIndex(index))
     }
-    setPlaylist()
-    dispatch(setCurrentTrackIndex(index))
   }
 
   return (
