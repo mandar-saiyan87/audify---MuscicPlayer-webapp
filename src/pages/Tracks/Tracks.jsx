@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { TracksPageMain, TrackContainer, CardContainer } from './tracks.styles'
 import { useGetsongsQuery } from '../../store/services/songsApi'
 import TopTracksCard from '../../components/TopTracksCard/TopTracks'
@@ -9,11 +9,15 @@ function Tracks() {
 
   const { data, error, isLoading } = useGetsongsQuery()
 
+  const isLogedIn = useSelector((state) => state.user.loggedinUser)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(setTracks(data?.trackList))
-    dispatch(setcurrentPlaylist(data?.trackList))
+    if (isLogedIn) {
+      dispatch(setcurrentPlaylist(data?.trackList))
+    }
   }, [data, dispatch])
 
 

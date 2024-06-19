@@ -16,13 +16,13 @@ function TopTracksCard({ carddetails }) {
 
   const [hoverState, setHoverState] = useState()
 
-
   function handlePlayClick(e) {
     e.stopPropagation()
     if (!isLoggedIn) {
       navigate('/login')
+    } else { 
+      dispatch(setcurrentPlaylist([carddetails]))
     }
-    dispatch(setcurrentPlaylist([carddetails]))
   }
 
 
