@@ -3,11 +3,24 @@ import { LoginPageMain, LoginContainer, LoginDetails, LogoDiv, PasswordInput } f
 import { AppImages } from '../../assets/constants'
 import { BiShow, BiHide } from "react-icons/bi";
 import { Link, useNavigate } from 'react-router-dom';
-import { setLoggedIn } from '../../store/dataSlice';
-import { useDispatch } from 'react-redux';
+import { loginUser } from '../../store/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import Cookies from 'js-cookie'
+import { resetdbUsermsg } from '../../store/authSlice';
+import validator from 'validator';
+import Alerts from '../../components/Alerts/Alerts';
 
 
 function Login() {
+
+  const token = useSelector((state) => state.user.token) || Cookies.get('token')
+
+  const newUsermsg = useSelector((state) => state.user.dbUsermsg)
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const [alerts, setAlerts] = useState({})
 
   const passRef = useRef()
 
@@ -34,9 +47,39 @@ function Login() {
   }, [passRef])
 
   function handleLogin() {
-    dispatch(setLoggedIn())
-    navigate('/home')
+    if (email.trim().length === 0 && password.trim().length === 0) {
+      setAlerts({ code: 'blank' })
+      setTimeout(() => {
+        setAlerts({})
+      }, 3000)
+    } else if (!validator.isEmail(email)) {
+      setAlerts({ code: 'emailinvalid' })
+      setTimeout(() => {
+        setAlerts({})
+      }, 3000)
+    }
+    else {
+      dispatch(loginUser({ email, password }))
+    }
   }
+
+  useEffect(() => {
+    if (token && !newUsermsg) {
+      setEmail('')
+      setPassword('')
+      navigate('/home')
+    }
+    if (newUsermsg?.code) {
+      setAlerts(newUsermsg)
+      const reset = setTimeout(() => {
+        setAlerts({})
+        dispatch(resetdbUsermsg())
+      }, 3000);
+      return () => clearTimeout(reset)
+    }
+  }, [token, newUsermsg, dispatch])
+
+
 
   return (
     <LoginPageMain>
@@ -47,10 +90,18 @@ function Login() {
         </LogoDiv>
         <LoginDetails>
           <label htmlFor="email" className='input_label'>Email</label>
-          <input type="email" placeholder='Email' className='input_area' />
+          <input type="email" placeholder='Email' className='input_area' value={email} onChange={(e) => setEmail(e.target.value)} />
           <label htmlFor="password" className='input_label'>Password</label>
           <PasswordInput isoutline={outline}>
-            <input type={showPassword ? 'text' : "password"} placeholder='Password' className='password_area' ref={passRef} onClick={handleOutline} />
+            <input
+              type={showPassword ? 'text' : "password"}
+              placeholder='Password'
+              className='password_area'
+              ref={passRef}
+              onClick={handleOutline}
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
             {showPassword ?
               <BiShow size={23} className='password-btn' onClick={() => setshowPassword(false)} /> :
               <BiHide size={23} className='password-btn' onClick={() => setshowPassword(true)} />}
@@ -66,6 +117,7 @@ function Login() {
           </Link>
         </p>
       </LoginContainer>
+      {Object.keys(alerts).length != 0 && <Alerts code={alerts.code} />}
     </LoginPageMain>
   )
 }

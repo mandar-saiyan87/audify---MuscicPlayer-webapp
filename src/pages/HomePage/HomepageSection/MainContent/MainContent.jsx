@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { NavLink, useLocation, useNavigate, Outlet } from 'react-router-dom'
 import {
   ContentDiv,
@@ -10,6 +10,7 @@ import {
   PlaylistHead,
   PlaylistTitle,
   CreatePlaylist,
+  UserSetings
 } from './maincontent.styles'
 import Drawer from '@mui/material/Drawer';
 import { useMediaQuery } from '@mui/material';
@@ -21,18 +22,25 @@ import { HiPlus } from "react-icons/hi2";
 import { useSelector } from 'react-redux';
 import LyricsPage from '../../../Lyrics/LyricsPage';
 import { Link } from 'react-router-dom';
+import { FaCircleUser } from "react-icons/fa6";
 
 
 
 
 function MainContent() {
 
+  const isUser = useSelector((state) => state.user.loggedinUser)
+
   const showLyrics = useSelector((state) => state.appdata.isLyrics)
 
   const matches = useMediaQuery((theme) => theme.breakpoints.between('sm', 'md'));
 
+  const [toggleLogout, setLogout] = useState(false)
+
   const currentUrl = useLocation()
   const navigate = useNavigate()
+
+  const userRef = useRef()
 
   const [menuDrawer, setmenuDrawer] = useState(false)
 
@@ -46,6 +54,18 @@ function MainContent() {
     }
   }, [currentUrl, navigate])
 
+  useEffect(() => {
+    function handleClickout(e) {
+      if (userRef.current && !userRef.current.contains(e.target)) {
+        setLogout(false)
+      }
+    }
+    document.addEventListener('click', handleClickout)
+    return () => {
+      document.removeEventListener('click', handleClickout)
+    }
+  }, [userRef])
+
 
   return (
     <>
@@ -54,12 +74,27 @@ function MainContent() {
           <HiMenuAlt2 size={30} className='menu_drawer_button' onClick={() => setmenuDrawer(true)} />
 
           <AuthDiv>
-            <Link to={`/signup`}>
-              <button className='sign_up_btn'>Sign Up</button>
-            </Link>
-            <Link to={`/login`}>
-              <button className='log_in_btn'>Log In</button>
-            </Link>
+            {!isUser ?
+              <>
+                <Link to={`/signup`}>
+                  <button className='sign_up_btn'>Sign Up</button>
+                </Link>
+                <Link to={`/login`}>
+                  <button className='log_in_btn'>Log In</button>
+                </Link>
+              </> :
+              <div div ref={userRef} onClick={() => setLogout(!toggleLogout)}>
+                <FaCircleUser color='white' size={25}
+                  className='user_settings_ico'
+                />
+              </div>
+            }
+            {
+              toggleLogout && <UserSetings>
+                <p>Logout</p>
+              </UserSetings>
+            }
+
           </AuthDiv>
         </Contentheader>
         {showLyrics ? <LyricsPage /> : <Outlet />}

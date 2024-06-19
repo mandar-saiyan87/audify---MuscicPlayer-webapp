@@ -6,13 +6,14 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createUser, resetdbUsermsg } from '../../store/authSlice';
 import Alerts from '../../components/Alerts/Alerts';
+import validator from 'validator';
 
 
 
 function SignUp() {
 
   const newUsermsg = useSelector((state) => state.user.dbUsermsg)
-  const [alerts, setAlerts] = useState(false)
+  const [alerts, setAlerts] = useState({})
 
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
@@ -41,7 +42,23 @@ function SignUp() {
   }, [passRef])
 
   function handleSignup() {
-    if (username.length > 0 && email.length > 0 && password.length > 0) {
+    if (username.trim().length === 0 && email.trim().length === 0 && password.trim().length === 0) {
+      setAlerts({ code: 'blank' })
+      setTimeout(() => {
+        setAlerts({})
+      }, 3000)
+    } else if (username.trim().length < 4) {
+      setAlerts({ code: 'short' })
+      setTimeout(() => {
+        setAlerts({})
+      }, 3000)
+    } else if (!validator.isEmail(email)) {
+      setAlerts({ code: 'emailinvalid' })
+      setTimeout(() => {
+        setAlerts({})
+      }, 3000)
+    }
+    else {
       dispatch(createUser({ username, email, password }))
     }
   }
@@ -53,9 +70,9 @@ function SignUp() {
         setEmail('')
         setPassword('')
       }
-      setAlerts(true)
+      setAlerts(newUsermsg)
       const reset = setTimeout(() => {
-        setAlerts(false)
+        setAlerts({})
       }, 3000);
       return () => clearTimeout(reset)
     }
@@ -99,8 +116,7 @@ function SignUp() {
           </Link>
         </p>
       </LoginContainer>
-      {alerts && <Alerts code={newUsermsg?.code} />}
-
+      {Object.keys(alerts).length != 0 && <Alerts code={alerts.code} />}
     </LoginPageMain>
   )
 }

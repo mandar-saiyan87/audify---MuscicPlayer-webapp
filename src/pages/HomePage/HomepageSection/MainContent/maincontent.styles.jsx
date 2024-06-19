@@ -72,6 +72,7 @@ export const CreatePlaylist = styled('div')({
 })
 
 export const AuthDiv = styled('div')(({ theme }) => ({
+  position: 'relative',
   backgroundColor: Colors.secondary,
   width: '100%',
   alignContent: 'end',
@@ -84,5 +85,20 @@ export const AuthDiv = styled('div')(({ theme }) => ({
     backgroundColor: 'transparent',
     padding: '0.4rem 0'
   },
+}))
+
+export const UserSetings = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: '0.9rem',
+  fontWeight: 500,
+  color: 'white',
+  backgroundColor: Colors.tertiary,
+  padding: '0.5rem 1.3rem',
+  borderRadius: '0.2rem',
+  cursor: 'pointer',
+  top: '2.1rem'
 }))
 
