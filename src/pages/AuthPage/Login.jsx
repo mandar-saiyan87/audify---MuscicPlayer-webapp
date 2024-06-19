@@ -13,8 +13,7 @@ import Alerts from '../../components/Alerts/Alerts';
 
 function Login() {
 
-  const token = useSelector((state) => state.user.token) || Cookies.get('token')
-
+  const isLoggedIn = useSelector((state) => state.user.loggedinUser)
   const newUsermsg = useSelector((state) => state.user.dbUsermsg)
 
   const [email, setEmail] = useState('')
@@ -64,7 +63,7 @@ function Login() {
   }
 
   useEffect(() => {
-    if (token && !newUsermsg) {
+    if (isLoggedIn && !newUsermsg) {
       setEmail('')
       setPassword('')
       navigate('/home')
@@ -77,7 +76,7 @@ function Login() {
       }, 3000);
       return () => clearTimeout(reset)
     }
-  }, [token, newUsermsg, dispatch])
+  }, [isLoggedIn, newUsermsg, dispatch])
 
 
 

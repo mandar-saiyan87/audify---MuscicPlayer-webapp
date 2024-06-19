@@ -19,10 +19,13 @@ import Logo from '../../../../components/Logo';
 import { menubar } from '../../../../assets/constants';
 import { VscLibrary } from "react-icons/vsc";
 import { HiPlus } from "react-icons/hi2";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import LyricsPage from '../../../Lyrics/LyricsPage';
 import { Link } from 'react-router-dom';
 import { FaCircleUser } from "react-icons/fa6";
+import { resetUserLogout } from '../../../../store/authSlice';
+import Cookies from 'js-cookie'
+
 
 
 
@@ -37,6 +40,8 @@ function MainContent() {
 
   const [toggleLogout, setLogout] = useState(false)
 
+  const dispatch = useDispatch()
+
   const currentUrl = useLocation()
   const navigate = useNavigate()
 
@@ -47,6 +52,12 @@ function MainContent() {
   function toggleMenuDrawer() {
     setmenuDrawer(false);
   };
+
+  function logout() {
+    setLogout(false)
+    Cookies.remove('token')
+    dispatch(resetUserLogout())
+  }
 
   useEffect(() => {
     if (currentUrl.pathname === '/') {
@@ -84,13 +95,13 @@ function MainContent() {
                 </Link>
               </> :
               <div div ref={userRef} onClick={() => setLogout(!toggleLogout)}>
-                <FaCircleUser color='white' size={25}
+                <FaCircleUser color='white' size={28}
                   className='user_settings_ico'
                 />
               </div>
             }
             {
-              toggleLogout && <UserSetings>
+              toggleLogout && <UserSetings onClick={logout}>
                 <p>Logout</p>
               </UserSetings>
             }

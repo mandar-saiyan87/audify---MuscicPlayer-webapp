@@ -27,7 +27,7 @@ export const loginUser = createAsyncThunk('loginUser', async (loginDetails) => {
   })
   const res = await req.json()
   if (res.code === 200) {
-    Cookies.set('token', res.token, {expires: 1})
+    Cookies.set('token', res.token, { expires: 1 })
   }
   return res
 })
@@ -39,6 +39,11 @@ export const userSlice = createSlice({
   reducers: {
     resetdbUsermsg: (state, action) => {
       state.dbUsermsg = null
+    },
+    resetUserLogout: (state, action) => {
+      state.dbUsermsg = null
+      state.loggedinUser = null
+      state.token = null
     }
   },
   extraReducers: (builder) => {
@@ -73,5 +78,5 @@ export const userSlice = createSlice({
   }
 })
 
-export const { resetdbUsermsg } = userSlice.actions
+export const { resetdbUsermsg, resetUserLogout } = userSlice.actions
 export default userSlice.reducer
