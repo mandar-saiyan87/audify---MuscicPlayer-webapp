@@ -248,7 +248,7 @@ img {
 	transform: scale(1.05)
 }
 
-.user_settings_ico{
+.user_settings_ico {
 	cursor: pointer;
 	margin-right: 1rem;
 }
@@ -352,6 +352,13 @@ img {
 	width: 0.6rem;
 	height: 0.6rem;
 	border-radius: 50%;
+}
+
+.bio {
+	font-size: 1rem;
+	font-weight: normal;
+	margin: 0.5rem 0;
+	max-width: 75%;
 }
 
 /************************** Track Card **************************/

@@ -16,6 +16,13 @@
   .menu_drawer_button {
     display: flex;
   }
+
+  .bio {
+    font-size: 0.7rem;
+    font-weight: normal;
+    margin: 0.5rem 0;
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 575px) {

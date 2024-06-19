@@ -23,18 +23,17 @@ export const ArtistHeadContent = styled('div')(({ theme }) => ({
   alignItems: 'end',
   gap: '1.5rem',
   [theme.breakpoints.down('sm')]: {
-    gap: '1rem',
+    // gap: '1rem',
+    flexDirection: 'column',
+    alignItems: 'start'
   }
 }))
 
 export const Imagediv = styled('div')(({ theme }) => ({
-  maxWidth: '200px',
+  minWidth: '200px',
   maxHeight: '200px',
+  maxWidth: '200px',
   borderRadius: '0.3rem',
-  [theme.breakpoints.down('sm')]: {
-    maxWidth: '150px',
-    maxHeight: '150px',
-  }
 }))
 
 export const ArtistDetailsDiv = styled('div')(({ theme }) => ({

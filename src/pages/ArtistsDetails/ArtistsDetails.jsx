@@ -57,6 +57,7 @@ function ArtistsDetails() {
               <FaPlay color='black' size={20} />
             </button>
             <p>{state.name}</p>
+            <p className='bio'>{state.bio}</p>
             <ArtistDetailsSub>
               <p>{data?.trackList.length} &nbsp;songs</p>
             </ArtistDetailsSub>
