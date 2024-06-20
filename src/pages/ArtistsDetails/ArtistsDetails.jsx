@@ -31,8 +31,9 @@ function ArtistsDetails() {
   function handleTracksPlay() {
     if (!isLoggedIn) {
       navigate('/login')
+    } else {
+      dispatch(setcurrentPlaylist(data?.trackList))
     }
-    dispatch(setcurrentPlaylist(data?.trackList))
   }
 
   function setPlaylist() {
