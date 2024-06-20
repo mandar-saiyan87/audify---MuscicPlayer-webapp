@@ -24,7 +24,8 @@ export const ArtistHeadContent = styled('div')(({ theme }) => ({
   gap: '1.5rem',
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
-    alignItems: 'start'
+    alignItems: 'start',
+    gap: '0'
   }
 }))
 

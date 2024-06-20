@@ -49,17 +49,17 @@ export const SearchTrackImage = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  Width: '100px',
-  Height: '100px',
+  width: '100px',
+  height: '100px',
   borderRadius: '0.3rem',
   [theme.breakpoints.down('sm')]: {
-    Width: '90px',
-    Height: '90px',
+    width: '90px',
+    height: '90px',
   }
 }))
 
 export const SearchTrackDetailtext = styled('div')(({ theme }) => ({
-
+  flex: 1
 }))
 
 export const SearchTrackruntime = styled('div')(({ theme }) => ({

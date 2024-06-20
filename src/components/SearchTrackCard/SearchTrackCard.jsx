@@ -25,7 +25,7 @@ function SearchTrackCard({ trackdetails }) {
   const dispatch = useDispatch()
 
   const Duration = (duration) => {
-    return duration.substring(0, 5); // Extracts the first 5 characters (MM:SS)
+    return duration?.substring(0, 5); // Extracts the first 5 characters (MM:SS)
   };
 
   function handlePlayClick() {

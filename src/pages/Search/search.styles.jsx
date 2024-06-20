@@ -7,6 +7,9 @@ export const SearchPageMain = styled('div')(({ theme, bgcolor }) => ({
   background: `linear-gradient(to bottom, ${bgcolor} 10%, rgba(255, 255, 255, 0) 85%)`,
   padding: '2rem',
   backgroundColor: 'rgb(27, 27, 27)',
+  [theme.breakpoints.down('sm')]: {
+    padding: '1rem',
+  }
 }))
 
 export const SearchBar = styled('div')(({ theme, outlineCol }) => ({
