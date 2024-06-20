@@ -91,6 +91,11 @@
     transform: transition 0.3s ease;
   }
 
+    .track_title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
 }
 
 

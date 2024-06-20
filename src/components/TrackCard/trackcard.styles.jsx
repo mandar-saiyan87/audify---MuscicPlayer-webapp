@@ -49,17 +49,17 @@ export const TrackImage = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  Width: '100px',
-  Height: '100px',
+  width: '90px',
+  height: '80px',
   borderRadius: '0.3rem',
   [theme.breakpoints.down('sm')]: {
-    Width: '90px',
-    Height: '90px',
+    width: '70px',
+    height: '70px',
   }
 }))
 
 export const TrackDetailtext = styled('div')(({ theme }) => ({
-
+  flex: 1
 }))
 
 export const Trackruntime = styled('div')(({ theme }) => ({
