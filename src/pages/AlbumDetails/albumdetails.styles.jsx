@@ -55,8 +55,8 @@ export const AlbumDetailsSub = styled('div')(({ theme }) => ({
 }))
 
 export const Imagediv = styled('div')(({ theme }) => ({
-  maxWidth: '200px',
-  maxHeight: '200px',
+  width: '200px',
+  height: '200px',
   borderRadius: '0.3rem',
   [theme.breakpoints.down('sm')]: {
     // maxWidth: '150px',

@@ -291,7 +291,8 @@ img {
 
 .album_details_image {
 	width: 100%;
-	height: 200px;
+	height: 100%;
+	/* height: 200px; */
 	border-radius: 0.3rem;
 	object-fit: cover;
 }
@@ -378,8 +379,8 @@ img {
 /************************** Track Card **************************/
 
 .track_card_img {
-	width: 100px;
-	height: 100px;
+	width: 100%;
+	height: 100%;
 	object-fit: cover;
 	border-radius: 0.3rem;
 }

@@ -28,9 +28,9 @@
 @media (max-width: 575px) {
   .album_details_image {
     width: 100%;
-    height: 140px;
+    /* height: 140px; */
     border-radius: 0.3rem;
-    object-fit: fill;
+    object-fit: cover;
   }
 
   .seperator {
@@ -40,12 +40,12 @@
     border-radius: 50%;
   }
 
-  .track_card_img {
-    width: 90px;
-    height: 65px;
-    object-fit: fill;
+  /* .track_card_img {
+    width: 100%;
+    height: 100%;
+    object-fit: Cover;
     border-radius: 0.3rem;
-  }
+  } */
 
   /* .play_button {
     display: flex;
@@ -81,7 +81,7 @@
     border-radius: 1.5rem;
   }
 
-  .sign_up_btn {  
+  .sign_up_btn {
     background-color: transparent;
     color: var(--defaulttext-color);
     border: none;
