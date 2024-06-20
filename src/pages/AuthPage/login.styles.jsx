@@ -6,6 +6,7 @@ export const LoginPageMain = styled('div')(({ theme }) => ({
   height: '100vh',
   background: `linear-gradient(to bottom, ${Colors.tertiary} 25%, black 100%)`,
   padding: '2rem',
+  overflowY: 'auto',
   [theme.breakpoints.down('sm')]: {
     padding: '0.5rem',
   }
