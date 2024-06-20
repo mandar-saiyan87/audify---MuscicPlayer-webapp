@@ -60,20 +60,39 @@
     margin-right: 1rem;
     cursor: pointer;
   } */
+  .details_play_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: max-content;
+    background-color: var(--primary-color2);
+    padding: 0.8rem;
+    border: none;
+    border-radius: 50%;
+    margin-top: 2rem;
+    margin-right: 1rem;
+    cursor: pointer;
+  }
+
+  .log_in_btn {
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.5rem 1.4rem;
+    border-radius: 1.5rem;
+  }
+
+  .sign_up_btn {  
+    background-color: transparent;
+    color: var(--defaulttext-color);
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transform: transition 0.3s ease;
+  }
+
 }
 
-.details_play_button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: max-content;
-  background-color: var(--primary-color2);
-  padding: 0.8rem;
-  border: none;
-  border-radius: 50%;
-  margin-top: 2rem;
-  margin-right: 1rem;
-  cursor: pointer;
-}
+
 
 @media (max-width: 375px) {}
