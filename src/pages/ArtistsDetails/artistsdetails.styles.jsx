@@ -23,7 +23,6 @@ export const ArtistHeadContent = styled('div')(({ theme }) => ({
   alignItems: 'end',
   gap: '1.5rem',
   [theme.breakpoints.down('sm')]: {
-    // gap: '1rem',
     flexDirection: 'column',
     alignItems: 'start'
   }
