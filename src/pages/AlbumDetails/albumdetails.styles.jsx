@@ -30,6 +30,12 @@ export const AlbumHeadContent = styled('div')(({ theme }) => ({
   }
 }))
 
+export const Imagediv = styled('div')(({ theme }) => ({
+  width: '200px',
+  height: '200px',
+  borderRadius: '0.3rem',
+}))
+
 export const AlbumDetailsDiv = styled('div')(({ theme }) => ({
   color: Colors.quaternary,
   fontSize: '2rem',
@@ -51,16 +57,6 @@ export const AlbumDetailsSub = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     gap: '0.3rem',
     textAlign: 'center'
-  }
-}))
-
-export const Imagediv = styled('div')(({ theme }) => ({
-  width: '200px',
-  height: '200px',
-  borderRadius: '0.3rem',
-  [theme.breakpoints.down('sm')]: {
-    // maxWidth: '150px',
-    // maxHeight: '150px',
   }
 }))
 

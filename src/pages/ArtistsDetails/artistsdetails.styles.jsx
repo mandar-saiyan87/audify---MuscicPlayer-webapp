@@ -30,13 +30,13 @@ export const ArtistHeadContent = styled('div')(({ theme }) => ({
 }))
 
 export const Imagediv = styled('div')(({ theme }) => ({
-  minWidth: '200px',
-  maxHeight: '200px',
-  maxWidth: '200px',
+  width: '200px',
+  height: '200px',
   borderRadius: '0.3rem',
 }))
 
 export const ArtistDetailsDiv = styled('div')(({ theme }) => ({
+  flex: 1,
   color: Colors.quaternary,
   fontSize: '2rem',
   fontWeight: '700',

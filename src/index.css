@@ -326,7 +326,7 @@ img {
 	padding: 0.8rem;
 	border: none;
 	border-radius: 50%;
-	margin-top: 11rem;
+	/* margin-top: 11rem; */
 	margin-right: 1rem;
 	cursor: pointer;
 }
@@ -370,10 +370,9 @@ img {
 }
 
 .bio {
-	font-size: 1rem;
+	font-size: 0.9rem;
 	font-weight: normal;
-	margin: 0.5rem 0;
-	max-width: 85%;
+	margin: 0.3rem 0;
 }
 
 /************************** Track Card **************************/

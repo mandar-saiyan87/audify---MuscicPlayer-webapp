@@ -28,7 +28,7 @@
 @media (max-width: 575px) {
   .album_details_image {
     width: 100%;
-    /* height: 140px; */
+    height: 100%;
     border-radius: 0.3rem;
     object-fit: cover;
   }
@@ -91,10 +91,10 @@
     transform: transition 0.3s ease;
   }
 
-    .track_title {
-      font-size: 1rem;
-      font-weight: 600;
-    }
+  .track_title {
+    font-size: 1rem;
+    font-weight: 600;
+  }
 
 }
 
