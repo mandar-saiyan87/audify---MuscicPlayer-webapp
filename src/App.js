@@ -16,6 +16,7 @@ import DiscoverCategory from "./pages/DiscoverCategory/DiscoverCategory";
 import GenrePage from "./pages/Genre/GenrePage";
 import Login from "./pages/AuthPage/Login";
 import SignUp from "./pages/AuthPage/SignUp";
+import CreateNewPlaylist from "./pages/CreateNewPlaylist/CreateNewPlaylist";
 
 
 let theme = createTheme()
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: '/home/genre/:genre',
         element: <GenrePage />
+      },
+      {
+        path: '/home/playlist/createnewplaylist',
+        element: <CreateNewPlaylist />
       },
     ],
   },

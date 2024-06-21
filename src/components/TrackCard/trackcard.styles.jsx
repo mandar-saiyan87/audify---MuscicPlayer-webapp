@@ -16,10 +16,11 @@ export const TrackCardMain = styled('div')(({ theme, hoverstate }) => ({
 export const TrackDetails = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
+  justifyContent: 'start',
   columnGap: '0.5rem',
   [theme.breakpoints.down('sm')]: {
-    columnGap: '0.3rem'
+    columnGap: '0.3rem',
+    width: '50%'
   }
 }))
 
@@ -33,8 +34,8 @@ export const Trackid = styled('div')(({ theme }) => ({
   fontWeight: '600',
   padding: '0 1rem',
   [theme.breakpoints.down('sm')]: {
-    width: '2rem',
-    padding: '0 0.5rem',
+    width: '1.5rem',
+    padding: '0 0.2rem',
   }
 }))
 
@@ -42,7 +43,10 @@ export const Trackinfo = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  columnGap: '0.7rem'
+  columnGap: '0.7rem',
+  [theme.breakpoints.down('sm')] : {
+  columnGap: '0.4rem'
+  }
 }))
 
 export const TrackImage = styled('div')(({ theme }) => ({
@@ -53,8 +57,8 @@ export const TrackImage = styled('div')(({ theme }) => ({
   height: '80px',
   borderRadius: '0.3rem',
   [theme.breakpoints.down('sm')]: {
-    width: '70px',
-    height: '70px',
+    width: '60px',
+    height: '60px',
   }
 }))
 
@@ -67,5 +71,6 @@ export const Trackruntime = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   fontSize: '0.9rem',
-  padding: '0 1.2rem'
+  padding: '0 1.2rem',
 }))
+
