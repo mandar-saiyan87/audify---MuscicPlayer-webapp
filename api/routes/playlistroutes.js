@@ -18,10 +18,9 @@ router.post('/createnewplaylist', async (req, res) => {
       values (${playlist.userid}, ${playlist.name}, ${playlist.description})
       returning playlistid, name
       `
-      console.log(newPlaylist)
+      // console.log(newPlaylist)
       res.status(200).json({ code: 200, newPlaylist: newPlaylist, msg: 'New playlist created' })
     }
-    // res.status(200).json({ code: 200, msg: 'In progress', playlist: playlist })
   } catch (error) {
     console.log(error)
     res.status(500).json({ code: 500, msg: 'Internal server error', error: error })
