@@ -1,3 +1,4 @@
+
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import Cookies from 'js-cookie';
 
@@ -6,7 +7,8 @@ const initialState = {
   loggedinUser: null,
   dbUsermsg: null,
   loading: false,
-  error: null
+  error: null,
+  userPlaylist: []
 }
 
 export const createUser = createAsyncThunk('createUser', async (signupDetails) => {
@@ -19,6 +21,7 @@ export const createUser = createAsyncThunk('createUser', async (signupDetails) =
   return response
 })
 
+
 export const loginUser = createAsyncThunk('loginUser', async (loginDetails) => {
   const req = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
     method: 'POST',
@@ -29,6 +32,20 @@ export const loginUser = createAsyncThunk('loginUser', async (loginDetails) => {
   if (res.code === 200) {
     Cookies.set('token', res.token, { expires: 1 })
   }
+  return res
+})
+
+export const createPlaylistApi = createAsyncThunk('createPlaylistApi', async (playlistData) => {
+  const { id, imgurl, playlistname, token } = playlistData
+  const req = await fetch(`${process.env.REACT_APP_API_URL}/createnewplaylist`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ id, imgurl, playlistname })
+  })
+  const res = await req.json()
   return res
 })
 
@@ -74,6 +91,17 @@ export const userSlice = createSlice({
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false
         state.error = action.error
+      })
+    builder.addCase(createPlaylistApi.pending, (state) => {
+      state.loading = true
+    })
+      .addCase(createPlaylistApi.fulfilled, (state, action) => {
+        state.loading = false
+        console.log(action.payload)
+        // state.userPlaylist.push(action.payload)
+      })
+      .addCase(createPlaylistApi.rejected, (state, action) => {
+        state.error = action.payload
       })
   }
 })
