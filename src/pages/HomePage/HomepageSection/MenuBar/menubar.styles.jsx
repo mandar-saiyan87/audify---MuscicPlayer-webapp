@@ -55,3 +55,8 @@ export const CreatePlaylist = styled('div')({
   padding: '1rem',
   borderRadius: '0.4rem'
 })
+
+export const UserPlayListSection = styled('div')(({ theme }) => ({
+  margin: '1rem 0',
+  padding: '0 0.2rem'
+}))

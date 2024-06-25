@@ -33,10 +33,10 @@ function CreateNewPlaylist() {
       navigate('/login')
     } else {
       const newPlaylistData = {
-        playlistname, imgurl, id: isUserLoggedIn.id, token
+        playlistname, description, imgurl, id: isUserLoggedIn.id, token
       }
       dispatch(createPlaylistApi(newPlaylistData))
-      setPlaylistName('')
+      setPlaylistName('New Playlist')
       setImgUrl('')
     }
   }

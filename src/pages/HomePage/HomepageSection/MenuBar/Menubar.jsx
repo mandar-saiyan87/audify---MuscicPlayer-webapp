@@ -1,14 +1,27 @@
 import React from 'react'
-import { Appmenu, MenuDiv, MenuItem, Playlist, PlaylistHead, PlaylistTitle, CreatePlaylist } from './menubar.styles'
+import {
+  Appmenu,
+  MenuDiv,
+  MenuItem,
+  Playlist,
+  PlaylistHead,
+  PlaylistTitle,
+  CreatePlaylist,
+  UserPlayListSection
+} from './menubar.styles'
 import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from '../../../../components/Logo'
 import { menubar } from '../../../../assets/constants';
 import { VscLibrary } from "react-icons/vsc";
 import { HiPlus } from "react-icons/hi2";
+import { useSelector } from 'react-redux';
+import PlaylistCard from '../../../../components/PlayListCard/PlaylistCard';
 
 
 
 function Menubar() {
+
+  const userPlaylist = useSelector((state) => state.user.userPlaylist)
 
   const navigate = useNavigate()
 
@@ -45,6 +58,11 @@ function Menubar() {
             <p className='create_playlist_sub'>It's easy</p>
             <button className='create_playlist_button' onClick={createPlaylist}>Create Playlist</button>
           </CreatePlaylist>
+          <UserPlayListSection>
+            {userPlaylist?.map((playlist) => (
+              <PlaylistCard key={playlist.id} playlist={playlist}/>
+            ))}
+          </UserPlayListSection>
         </Playlist>
       </Appmenu>
     </>

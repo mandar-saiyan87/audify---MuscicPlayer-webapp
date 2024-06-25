@@ -34,6 +34,7 @@ router.post('/usersignup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   const loginuser = req.body
+  let userPlaylists = []
   try {
     const user = await sql`SELECT * FROM Users WHERE Email = ${loginuser.email}`;
     if (user.length === 0) {
@@ -44,9 +45,12 @@ router.post('/login', async (req, res) => {
       res.status(400).json({ code: 400, msg: 'Invalid credentials' });
     }
     const token = jwt.sign({ userId: user[0].userid }, JWT_SECRET, { expiresIn: '1day' })
-    res.status(200).json({ code: 200, user: { username: user[0].username, email: user[0].email, id: user[0].userid }, token: token })
+    if (isPasswordValid && token) {
+      userPlaylists = await sql`select * from public.playlists where userid = ${user[0].userid}`
+    }
+    res.status(200).json({ code: 200, user: { username: user[0].username, email: user[0].email, id: user[0].userid }, token: token, userPlaylist: userPlaylists })
   } catch (error) {
-    // console.log(error)
+    console.log(error)
     res.status(500).json({ code: 500, msg: 'Internal server error', error: error })
   }
 })

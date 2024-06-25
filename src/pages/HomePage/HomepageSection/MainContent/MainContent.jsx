@@ -25,6 +25,9 @@ import { Link } from 'react-router-dom';
 import { FaCircleUser } from "react-icons/fa6";
 import { resetUserLogout } from '../../../../store/authSlice';
 import Cookies from 'js-cookie'
+// CSS imported from Menubar styles
+import { UserPlayListSection } from '../MenuBar/menubar.styles';
+import PlaylistCard from '../../../../components/PlayListCard/PlaylistCard';
 
 
 
@@ -37,6 +40,10 @@ function MainContent() {
   const showLyrics = useSelector((state) => state.appdata.isLyrics)
 
   const matches = useMediaQuery((theme) => theme.breakpoints.between('sm', 'md'));
+
+  const openDrawer = useMediaQuery((theme) => theme.breakpoints.down('md'));
+
+  const userPlaylist = useSelector((state) => state.user.userPlaylist)
 
   const [toggleLogout, setLogout] = useState(false)
 
@@ -110,41 +117,49 @@ function MainContent() {
         </Contentheader>
         {showLyrics ? <LyricsPage /> : <Outlet />}
       </ContentDiv>
-      <Drawer open={menuDrawer} onClose={() => toggleMenuDrawer(false)} SlideProps={{
-        sx: {
-          backgroundColor: '#373A40',
-          width: matches ? '50%' : '65%',
-          padding: '0.5rem'
-        }
-      }}>
-        <Logo />
-        <MenuDiv>
-          {menubar.map((menu) => (
-            <NavLink to={menu.route} className={({ isActive }) =>
-              isActive ? 'nav_link_active' : 'nav_link'
-            } key={menu.name}>
-              <MenuItem>
-                {menu.ico}
-                <p>{menu.name}</p>
-              </MenuItem>
-            </NavLink>
-          ))}
-        </MenuDiv>
-        <Playlist>
-          <PlaylistHead>
-            <PlaylistTitle>
-              <VscLibrary size={22} color='#8392A7' />
-              <p className='library_head_title'>Your Library</p>
-            </PlaylistTitle>
-            <HiPlus color='#8392A7' />
-          </PlaylistHead>
-          <CreatePlaylist>
-            <p className='create_playlist'>Create your playlist</p>
-            <p className='create_playlist_sub'>It's easy</p>
-            <button className='create_playlist_button'>Create Playlist</button>
-          </CreatePlaylist>
-        </Playlist>
-      </Drawer>
+      {
+        openDrawer &&
+        <Drawer Drawer open={menuDrawer} onClose={() => toggleMenuDrawer(false)} SlideProps={{
+          sx: {
+            backgroundColor: '#373A40',
+            width: matches ? '50%' : '65%',
+            padding: '0.5rem'
+          }
+        }}>
+          <Logo />
+          <MenuDiv>
+            {menubar.map((menu) => (
+              <NavLink to={menu.route} className={({ isActive }) =>
+                isActive ? 'nav_link_active' : 'nav_link'
+              } key={menu.name}>
+                <MenuItem>
+                  {menu.ico}
+                  <p>{menu.name}</p>
+                </MenuItem>
+              </NavLink>
+            ))}
+          </MenuDiv>
+          <Playlist>
+            <PlaylistHead>
+              <PlaylistTitle>
+                <VscLibrary size={22} color='#8392A7' />
+                <p className='library_head_title'>Your Library</p>
+              </PlaylistTitle>
+              <HiPlus color='#8392A7' />
+            </PlaylistHead>
+            <CreatePlaylist>
+              <p className='create_playlist'>Create your playlist</p>
+              <p className='create_playlist_sub'>It's easy</p>
+              <button className='create_playlist_button'>Create Playlist</button>
+            </CreatePlaylist>
+            <UserPlayListSection>
+              {userPlaylist?.map((playlist) => (
+                <PlaylistCard key={playlist.id} playlist={playlist} />
+              ))}
+            </UserPlayListSection>
+          </Playlist>
+        </Drawer >
+      }
     </>
   )
 }
