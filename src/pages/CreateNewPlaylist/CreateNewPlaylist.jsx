@@ -10,7 +10,7 @@ import { useMediaQuery } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie'
-import { createPlaylistApi } from '../../store/authSlice';
+import { createPlaylistApi } from '../../store/userPlaylistSlice';
 
 
 function CreateNewPlaylist() {

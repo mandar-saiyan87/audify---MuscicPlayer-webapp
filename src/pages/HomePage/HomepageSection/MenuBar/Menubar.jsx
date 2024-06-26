@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   Appmenu,
   MenuDiv,
@@ -14,20 +14,35 @@ import Logo from '../../../../components/Logo'
 import { menubar } from '../../../../assets/constants';
 import { VscLibrary } from "react-icons/vsc";
 import { HiPlus } from "react-icons/hi2";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import PlaylistCard from '../../../../components/PlayListCard/PlaylistCard';
+import Cookies from 'js-cookie'
+import { getUserPlaylistApi } from '../../../../store/userPlaylistSlice';
 
 
 
 function Menubar() {
 
-  const userPlaylist = useSelector((state) => state.user.userPlaylist)
+  const dispatch = useDispatch()
+  const isLoggedin = useSelector((state) => state.user.loggedinUser)
+  const token = useSelector((state) => state.user.token) || Cookies.get('token')
+
+  const userPlaylist = useSelector((state) => state.playlist.userPlaylist)
 
   const navigate = useNavigate()
 
   function createPlaylist() {
     navigate('/home/playlist/createnewplaylist')
   }
+
+  useEffect(() => {
+    if (isLoggedin && token) {
+      dispatch(getUserPlaylistApi({
+        userid: isLoggedin?.id,
+        token
+      }))
+    }
+  }, [dispatch, isLoggedin, token])
 
   return (
     <>
@@ -60,7 +75,7 @@ function Menubar() {
           </CreatePlaylist>
           <UserPlayListSection>
             {userPlaylist?.map((playlist) => (
-              <PlaylistCard key={playlist.id} playlist={playlist}/>
+              <PlaylistCard key={playlist.playlistid} playlist={playlist} />
             ))}
           </UserPlayListSection>
         </Playlist>

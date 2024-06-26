@@ -37,7 +37,7 @@ function PlaylistDetails() {
             <button className='details_play_button' onClick={() => { }}>
               <FaPlay color='black' size={20} />
             </button>
-            <p>{state.title}</p>
+            <p>{state.name}</p>
             <AlbumDetailsSub>
               {/* <p>{state.artistname}</p> */}
               {/* <p className='seperator'></p> */}

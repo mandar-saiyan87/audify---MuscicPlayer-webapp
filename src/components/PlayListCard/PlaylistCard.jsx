@@ -10,10 +10,10 @@ import { IoMusicalNotes } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { useSelector, useDispatch } from 'react-redux';
 import Cookies from 'js-cookie'
-import { deletePlaylistApi } from '../../store/authSlice';
+import { deletePlaylistApi } from '../../store/userPlaylistSlice';
 import { useNavigate } from 'react-router-dom';
 
-function PlaylistCard({ playlist }) {
+function PlaylistCard({ playlist, hidden }) {
 
   const [hoverStatus, setHoverStatus] = useState(false)
 
@@ -42,7 +42,7 @@ function PlaylistCard({ playlist }) {
     <PlaylistCardMain
       onMouseEnter={() => setHoverStatus(true)}
       onMouseLeave={() => setHoverStatus(false)}
-      onClick={handleClick}
+      onClick={handleClick} 
     >
       <PlaylistInfo>
         <Imagediv>
@@ -55,7 +55,7 @@ function PlaylistCard({ playlist }) {
         </Imagediv>
         <p>{playlist.name}</p>
       </PlaylistInfo>
-      <DeleteButton isHover={hoverStatus} onClick={handleDelete}>
+      <DeleteButton isHover={hoverStatus} onClick={handleDelete} hide={hidden}>
         <MdDelete color='red' size={20} />
       </DeleteButton>
     </PlaylistCardMain>

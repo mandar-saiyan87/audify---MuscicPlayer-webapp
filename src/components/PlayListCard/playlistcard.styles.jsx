@@ -9,7 +9,7 @@ export const PlaylistCardMain = styled('div')(({ theme }) => ({
   fontSize: '1rem',
   fontWeight: '500',
   color: 'white',
-  padding: '0.4rem',
+  padding: '0.5rem 1rem',
   cursor: 'pointer',
   ':hover': {
     backgroundColor: Colors.tertiary,
@@ -40,10 +40,10 @@ export const PlaylistInfo = styled('div')(({ theme }) => ({
   columnGap: '0.5rem',
 }))
 
-export const DeleteButton = styled('div')(({ theme, isHover }) => ({
-  display: isHover ? 'flex' : 'none',
+export const DeleteButton = styled('div')(({ theme, isHover, hide }) => ({
+  display: isHover && !hide ? 'flex' : 'none',
   cursor: 'pointer',
-  [theme.brealpoints.down('md')]: {
+  [theme.breakpoints.down('md')]: {
     display: 'none'
   }
 }))

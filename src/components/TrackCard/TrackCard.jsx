@@ -8,7 +8,7 @@ import {
   TrackImage,
   TrackDetailtext
 } from './trackcard.styles'
-import { FaPlay } from "react-icons/fa6";
+import { FaPlay, FaCheckCircle } from "react-icons/fa6";
 import { setCurrentTrackIndex } from '../../store/dataSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';

@@ -35,3 +35,13 @@ export const ImgDiv = styled('div')(({ theme }) => ({
   height: '220px',
   overflow: 'none'
 }))
+
+export const ButtonsDiv = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  width: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  padding: '1rem',
+  top: '10rem'
+}))
