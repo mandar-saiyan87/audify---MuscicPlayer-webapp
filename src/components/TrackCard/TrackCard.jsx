@@ -8,18 +8,23 @@ import {
   TrackImage,
   TrackDetailtext
 } from './trackcard.styles'
-import { FaPlay, FaCheckCircle } from "react-icons/fa6";
+import { FaPlay } from "react-icons/fa6";
+import { FaCheckCircle } from "react-icons/fa";
 import { setCurrentTrackIndex } from '../../store/dataSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { IoIosAddCircleOutline } from "react-icons/io";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
+
 function TrackCard({ track, index, setPlaylist, theme }) {
 
   const mobileDevice = useMediaQuery((theme) => theme.breakpoints.down('sm'));
 
   const isLoggedIn = useSelector((state) => state.user.loggedinUser)
+  const playlistTracks = useSelector((state) => state.playlist.playlistData)
+
+  // console.log(playlistTracks)
 
   const [hoverState, setHoverState] = useState(false)
 
@@ -39,6 +44,8 @@ function TrackCard({ track, index, setPlaylist, theme }) {
       dispatch(setCurrentTrackIndex(index))
     }
   }
+
+  const isInPlaylist = playlistTracks?.some(playlist => playlist.songid === track.songid)
 
   return (
     <TrackCardMain
@@ -62,7 +69,14 @@ function TrackCard({ track, index, setPlaylist, theme }) {
           </TrackDetailtext>
         </Trackinfo>
       </TrackDetails>
-      <IoIosAddCircleOutline size={24} style={{ cursor: 'pointer' }} />
+      {isInPlaylist ? <FaCheckCircle
+        size={22}
+        color='green'
+        style={{ cursor: 'pointer' }}
+        onClick={() => { }} /> :
+        <IoIosAddCircleOutline size={24} style={{ cursor: 'pointer' }} />
+      }
+
       <Trackruntime>
         <p>{Duration(track.duration)}</p>
       </Trackruntime>

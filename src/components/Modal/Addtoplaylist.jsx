@@ -25,6 +25,8 @@ function Addtoplaylist({ isopen, setState, trackid }) {
   const isLoggedin = useSelector((state) => state.user.loggedinUser)
   const token = useSelector((state) => state.user.token) || Cookies.get('token')
 
+  // console.log(userPlaylists)
+
   function handlePlaylistSelect(playlistId) {
     if (selectedPlaylists.includes(playlistId)) {
       setSelectedPlaylists(selectedPlaylists.filter(id => id !== playlistId));
@@ -38,7 +40,7 @@ function Addtoplaylist({ isopen, setState, trackid }) {
     setSelectedPlaylists([])
     setState(false)
   }
-  
+
   return (
     <Modal
       open={isopen}
@@ -56,16 +58,20 @@ function Addtoplaylist({ isopen, setState, trackid }) {
               </Link>
             </>
           }
-          {userPlaylists?.map((playlist) => (
-            <SelectionDiv key={playlist.playlistid}>
-              <PlaylistCard playlist={playlist} hidden={true} />
-              <FaCheckCircle
-                size={22}
-                color={selectedPlaylists.includes(playlist.playlistid) ? 'green' : ''}
-                style={{ cursor: 'pointer' }}
-                onClick={() => handlePlaylistSelect(playlist.playlistid)} />
-            </SelectionDiv>
-          ))}
+          {userPlaylists?.map((playlist) => {
+
+            const isInPlaylist = playlist.songs.some(song => song.songid === trackid)
+            return (
+              <SelectionDiv key={playlist.playlistid}>
+                <PlaylistCard playlist={playlist} hidden={true} />
+                <FaCheckCircle
+                  size={22}
+                  color={selectedPlaylists.includes(playlist.playlistid) || isInPlaylist ? 'green' : ''}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => handlePlaylistSelect(playlist.playlistid)} />
+              </SelectionDiv>
+            )
+          })}
           <button className='log_in_btn' style={{ margin: '1rem 0', backgroundColor: Colors.primary }} onClick={addtracktoplaylist}>Add</button>
         </PlaylistDiv>
       </BoxStyle>

@@ -59,7 +59,20 @@ router.get('/getUserPlaylists/:userid', async (req, res) => {
     // console.log(userid)
     const playlists = await sql`select * from public.playlists where userid=${userid}`
     if (playlists.length > 0) {
-      res.status(200).json({ code: 200, playlists: playlists, msg: 'Playlist fetched successfully' })
+      const playlistids = playlists.map(playlist => playlist.playlistid)
+      const songs = await sql`
+        SELECT ps.playlistid, s.*
+        FROM public.playlistsongs ps
+        JOIN public.songs s ON ps.songid = s.songid
+        WHERE ps.playlistid = ANY(${playlistids})
+      `;
+      const playlistsWithSongs = playlists.map(playlist => {
+        return {
+          ...playlist,
+          songs: songs.filter(song => song.playlistid === playlist.playlistid)
+        };
+      });
+      res.status(200).json({ code: 200, playlists: playlistsWithSongs, msg: 'Playlist fetched successfully' })
     } else {
       res.status(404).json({ code: 404, msg: 'No playlist found' })
     }
