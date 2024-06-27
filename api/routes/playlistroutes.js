@@ -121,33 +121,33 @@ router.post('/deletePlaylist', async (req, res) => {
   }
 })
 
-router.get('/getplaylisttracks/:playlistid', async (req, res) => {
-  const authHeader = req.headers.authorization;
-  if (!authHeader) {
-    return res.status(401).json({ code: 401, msg: 'No authorization token provided' });
-  }
+// router.get('/getplaylisttracks/:playlistid', async (req, res) => {
+//   const authHeader = req.headers.authorization;
+//   if (!authHeader) {
+//     return res.status(401).json({ code: 401, msg: 'No authorization token provided' });
+//   }
 
-  const token = authHeader.split(' ')[1];
-  try {
-    const decodedToken = jwt.verify(token, JWT_SECRET);
+//   const token = authHeader.split(' ')[1];
+//   try {
+//     const decodedToken = jwt.verify(token, JWT_SECRET);
 
-    const playlist = req.params.playlistid
-    const playlistTracks = await sql`
-    select s.*
-    from public.playlistsongs ps
-    join public.songs s on ps.songid = s.songid
-    where ps.playlistid=${playlist}
-    `
-    // console.log(playlistTracks)
-    return res.status(200).json({ code: 200, tracklist: playlistTracks, msg: 'Tracks fetched successfully' });
-  } catch (error) {
-    if (error.name === 'JsonWebTokenError' || error.name === 'TokenExpiredError') {
-      return res.status(401).json({ code: 401, msg: 'Invalid or expired token', error: error.message });
-    }
-    console.log(error);
-    return res.status(500).json({ code: 500, msg: 'Internal server error', error: error.message });
-  }
-})
+//     const playlist = req.params.playlistid
+//     const playlistTracks = await sql`
+//     select s.*
+//     from public.playlistsongs ps
+//     join public.songs s on ps.songid = s.songid
+//     where ps.playlistid=${playlist}
+//     `
+//     // console.log(playlistTracks)
+//     return res.status(200).json({ code: 200, tracklist: playlistTracks, msg: 'Tracks fetched successfully' });
+//   } catch (error) {
+//     if (error.name === 'JsonWebTokenError' || error.name === 'TokenExpiredError') {
+//       return res.status(401).json({ code: 401, msg: 'Invalid or expired token', error: error.message });
+//     }
+//     console.log(error);
+//     return res.status(500).json({ code: 500, msg: 'Internal server error', error: error.message });
+//   }
+// })
 
 router.post('/addtracktoplaylist', async (req, res) => {
   const authHeader = req.headers.authorization;

@@ -28,15 +28,18 @@ function PlaylistDetails() {
   const { state } = useLocation()
   const dispatch = useDispatch()
 
-  const playlisttracks = useSelector((state) => state.playlist.playlistData)
+  // const playlisttracks = useSelector((state) => state.playlist.playlistData)
+  const userPlaylists = useSelector((state) => state.playlist.userPlaylist)
+  const currentPlaylist = userPlaylists?.filter(playlist => playlist.playlistid === state.playlistid)
+  console.log(currentPlaylist)
 
   function setPlaylist() {
-    dispatch(setcurrentPlaylist(playlisttracks))
+    dispatch(setcurrentPlaylist(currentPlaylist[0].songs))
   }
 
-  useEffect(() => {
-    dispatch(getplaylisttracksApi({ id: state.playlistid, token }))
-  }, [dispatch, state])
+  // useEffect(() => {
+  //   dispatch(getplaylisttracksApi({ id: state.playlistid, token }))
+  // }, [dispatch, state])
 
   return (
     <AlbumMain bgcolor={bgcolor}>
@@ -56,15 +59,20 @@ function PlaylistDetails() {
             </button>
             <p>{state.name}</p>
             <AlbumDetailsSub>
-              <p>{playlisttracks?.length} &nbsp;songs</p>
+              <p>{currentPlaylist?.length} &nbsp;songs</p>
             </AlbumDetailsSub>
           </AlbumDetailsDiv>
         </AlbumHeadContent>
       </AlbumHead>
       <AlbumtracksDiv>
-        {playlisttracks?.map((track, index) => (
+        {
+          currentPlaylist[0].songs?.map((track, index) => (
+            <TrackCard track={track} index={index} key={track.songid} setPlaylist={setPlaylist} />
+          ))
+        }
+        {/* {userPlaylists?.map((track, index) => (
           <TrackCard track={track} index={index} key={track.songid} setPlaylist={setPlaylist} />
-        ))}
+        ))} */}
       </AlbumtracksDiv>
     </AlbumMain>
   )

@@ -33,7 +33,7 @@ function TrackCard({ track, index, setPlaylist, theme }) {
   const navigate = useNavigate()
 
   const Duration = (duration) => {
-    return duration.substring(0, 5); // Extracts the first 5 characters (MM:SS)
+    return duration?.substring(0, 5); // Extracts the first 5 characters (MM:SS)
   };
 
   function handleClick() {
@@ -78,7 +78,7 @@ function TrackCard({ track, index, setPlaylist, theme }) {
       }
 
       <Trackruntime>
-        <p>{Duration(track.duration)}</p>
+        <p>{Duration(track?.duration)}</p>
       </Trackruntime>
     </TrackCardMain>
   )
