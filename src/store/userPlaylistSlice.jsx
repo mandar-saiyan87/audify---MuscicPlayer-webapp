@@ -2,8 +2,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
   loading: false,
+  success: null,
   error: null,
-  userPlaylist: []
+  userPlaylist: [],
+  playlistData: []
 }
 
 export const getUserPlaylistApi = createAsyncThunk('getUserPlaylistApi', async (userdata) => {
@@ -48,13 +50,25 @@ export const deletePlaylistApi = createAsyncThunk('deletePlaylistApi', async (pl
 })
 
 export const addtracktoplaylistApi = createAsyncThunk('addtracktoplaylistApi', async (addtoplaylistdata) => {
-  const req = await fetch(`${process.env.REACT_APP_API_URL}/deletePlaylist/addtracktoplaylist`, {
+  const req = await fetch(`${process.env.REACT_APP_API_URL}/addtracktoplaylist`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${addtoplaylistdata.token}`
     },
     body: JSON.stringify({ id: addtoplaylistdata.trackid, selectedplaylists: addtoplaylistdata.selectedPlaylists })
+  })
+  const res = await req.json()
+  return res
+})
+
+export const getplaylisttracksApi = createAsyncThunk('getplaylisttracksApi', async (playlist) => {
+  const req = await fetch(`${process.env.REACT_APP_API_URL}/getplaylisttracks/${playlist.id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${playlist.token}`
+    },
   })
   const res = await req.json()
   return res
@@ -108,8 +122,21 @@ export const playlistSlice = createSlice({
       .addCase(addtracktoplaylistApi.fulfilled, (state, action) => {
         state.loading = false
         console.log(action.payload)
+        state.success = action.payload
       })
       .addCase(addtracktoplaylistApi.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.error
+      })
+    builder.addCase(getplaylisttracksApi.pending, (state) => {
+      state.loading = true
+    })
+      .addCase(getplaylisttracksApi.fulfilled, (state, action) => {
+        state.loading = false
+        // console.log(action.payload)
+        state.playlistData = action.payload.tracklist
+      })
+      .addCase(getplaylisttracksApi.rejected, (state, action) => {
         state.loading = false
         state.error = action.error
       })

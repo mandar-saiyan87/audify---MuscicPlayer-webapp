@@ -14,6 +14,7 @@ export const TrackCardMain = styled('div')(({ theme, hoverstate }) => ({
 }))
 
 export const TrackDetails = styled('div')(({ theme }) => ({
+  width: '40%',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'start',
@@ -44,8 +45,8 @@ export const Trackinfo = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   columnGap: '0.7rem',
-  [theme.breakpoints.down('sm')] : {
-  columnGap: '0.4rem'
+  [theme.breakpoints.down('sm')]: {
+    columnGap: '0.4rem'
   }
 }))
 

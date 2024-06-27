@@ -35,6 +35,8 @@ function Addtoplaylist({ isopen, setState, trackid }) {
 
   function addtracktoplaylist() {
     dispatch(addtracktoplaylistApi({ selectedPlaylists, trackid, token }))
+    setSelectedPlaylists([])
+    setState(false)
   }
   
   return (
