@@ -8,6 +8,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import Cookies from 'js-cookie'
 import TrackCard from '../../components/TrackCard/TrackCard';
 import { setcurrentPlaylist } from '../../store/dataSlice';
+import { getUserPlaylistApi } from '../../store/userPlaylistSlice';
+import { setPlaylistData } from '../../store/userPlaylistSlice';
 // CSS imported from AlbumDetails page styles
 import {
   AlbumMain,
@@ -23,6 +25,7 @@ import { NoImage } from '../../components/PlayListCard/playlistcard.styles';
 
 function PlaylistDetails() {
 
+  const isLoggedin = useSelector((state) => state.user.loggedinUser)
   const token = useSelector((state) => state.user.token) || Cookies.get('token')
   const bgcolor = getRandomColor()
   const { state } = useLocation()
@@ -31,15 +34,24 @@ function PlaylistDetails() {
   // const playlisttracks = useSelector((state) => state.playlist.playlistData)
   const userPlaylists = useSelector((state) => state.playlist.userPlaylist)
   const currentPlaylist = userPlaylists?.filter(playlist => playlist.playlistid === state.playlistid)
-  console.log(currentPlaylist)
+
 
   function setPlaylist() {
     dispatch(setcurrentPlaylist(currentPlaylist[0].songs))
   }
 
-  // useEffect(() => {
-  //   dispatch(getplaylisttracksApi({ id: state.playlistid, token }))
-  // }, [dispatch, state])
+  useEffect(() => {
+    if (isLoggedin && token) {
+      dispatch(getUserPlaylistApi({
+        userid: isLoggedin?.id,
+        token
+      }))
+    }
+  }, [dispatch, isLoggedin, token])
+
+  useEffect(() => {
+    dispatch(setPlaylistData(currentPlaylist[0].songs))
+  }, [dispatch, currentPlaylist])
 
   return (
     <AlbumMain bgcolor={bgcolor}>
@@ -59,7 +71,7 @@ function PlaylistDetails() {
             </button>
             <p>{state.name}</p>
             <AlbumDetailsSub>
-              <p>{currentPlaylist?.length} &nbsp;songs</p>
+              <p>{currentPlaylist[0].songs?.length} &nbsp;songs</p>
             </AlbumDetailsSub>
           </AlbumDetailsDiv>
         </AlbumHeadContent>

@@ -179,6 +179,30 @@ router.post('/addtracktoplaylist', async (req, res) => {
   }
 })
 
+router.post('/removetrackfromplaylist', async (req, res) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    return res.status(401).json({ code: 401, msg: 'No authorization token provided' });
+  }
+
+  const token = authHeader.split(' ')[1];
+  try {
+    const decodedToken = jwt.verify(token, JWT_SECRET);
+
+    const playlist = req.body
+    console.log(trackid)
+
+
+    return res.status(200).json({ code: 200, msg: 'in progress' });
+  } catch (error) {
+    if (error.name === 'JsonWebTokenError' || error.name === 'TokenExpiredError') {
+      return res.status(401).json({ code: 401, msg: 'Invalid or expired token', error: error.message });
+    }
+    console.log(error);
+    return res.status(500).json({ code: 500, msg: 'Internal server error', error: error.message });
+  }
+})
+
 export default router
 
 

@@ -21,6 +21,9 @@ function TrackCard({ track, index, setPlaylist, theme }) {
 
   const mobileDevice = useMediaQuery((theme) => theme.breakpoints.down('sm'));
 
+  const [modal, setModal] = useState(false)
+  const [selectedTrack, setSelectedTrack] = useState(null);
+
   const isLoggedIn = useSelector((state) => state.user.loggedinUser)
   const playlistTracks = useSelector((state) => state.playlist.playlistData)
 

@@ -77,7 +77,11 @@ export const getplaylisttracksApi = createAsyncThunk('getplaylisttracksApi', asy
 export const playlistSlice = createSlice({
   name: 'playlist',
   initialState,
-  reducers: {},
+  reducers: {
+    setPlaylistData: (state, action) => { 
+      state.playlistData = action.payload
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(getUserPlaylistApi.pending, (state) => {
       state.loading = true
@@ -143,5 +147,5 @@ export const playlistSlice = createSlice({
   }
 })
 
-export const { } = playlistSlice.actions
+export const { setPlaylistData } = playlistSlice.actions
 export default playlistSlice.reducer
