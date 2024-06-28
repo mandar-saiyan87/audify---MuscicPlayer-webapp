@@ -189,11 +189,14 @@ router.post('/removetrackfromplaylist', async (req, res) => {
   try {
     const decodedToken = jwt.verify(token, JWT_SECRET);
 
-    const playlist = req.body
-    console.log(trackid)
+    const { songid, playlistid } = req.body
 
-
-    return res.status(200).json({ code: 200, msg: 'in progress' });
+    // console.log(songid, playlistid)
+    const removedtrack = await sql`delete from public.playlistsongs where playlistid=${playlistid} and songid=${songid}
+    returning playlistid, songid
+    `
+    // console.log(removedtrack)
+    return res.status(200).json({ code: 200, removedtrack: removedtrack, msg: 'in progress' });
   } catch (error) {
     if (error.name === 'JsonWebTokenError' || error.name === 'TokenExpiredError') {
       return res.status(401).json({ code: 401, msg: 'Invalid or expired token', error: error.message });

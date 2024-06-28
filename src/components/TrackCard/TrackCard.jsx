@@ -15,11 +15,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { IoIosAddCircleOutline } from "react-icons/io";
 import useMediaQuery from '@mui/material/useMediaQuery';
+import Addtoplaylist from '../Modal/Addtoplaylist';
+import { deletetrackfromplaylistApi } from '../../store/userPlaylistSlice';
+import Cookies from 'js-cookie'
 
 
-function TrackCard({ track, index, setPlaylist, theme }) {
+function TrackCard({ track, index, setPlaylist, theme, playlistid }) {
 
   const mobileDevice = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  
+  const token = useSelector((state) => state.user.token) || Cookies.get('token')
 
   const [modal, setModal] = useState(false)
   const [selectedTrack, setSelectedTrack] = useState(null);
@@ -48,42 +53,56 @@ function TrackCard({ track, index, setPlaylist, theme }) {
     }
   }
 
+  function handleAddClick(e, id) {
+    e.stopPropagation()
+    setSelectedTrack(id)
+    setModal(true)
+  }
+  function handleRemovefromplaylist(e, songid) {
+    e.stopPropagation()
+    dispatch(deletetrackfromplaylistApi({ songid, playlistid, token }))
+  }
+
+
   const isInPlaylist = playlistTracks?.some(playlist => playlist.songid === track.songid)
 
   return (
-    <TrackCardMain
-      onMouseEnter={() => setHoverState(true)}
-      onMouseLeave={() => setHoverState(false)}
-      hoverstate={hoverState}
-      onClick={handleClick}>
-      <TrackDetails>
-        {!mobileDevice &&
-          <Trackid>
-            {hoverState ? <FaPlay /> : <p>{index + 1}</p>}
-          </Trackid>
+    <>
+      <Addtoplaylist isopen={modal} setState={setModal} trackid={selectedTrack} />
+      <TrackCardMain
+        onMouseEnter={() => setHoverState(true)}
+        onMouseLeave={() => setHoverState(false)}
+        hoverstate={hoverState}
+        onClick={handleClick}>
+        <TrackDetails>
+          {!mobileDevice &&
+            <Trackid>
+              {hoverState ? <FaPlay /> : <p>{index + 1}</p>}
+            </Trackid>
+          }
+          <Trackinfo>
+            <TrackImage>
+              <img src={track.imageurl} alt="track_image" className='track_card_img' />
+            </TrackImage>
+            <TrackDetailtext>
+              <p className='track_title'>{track.title}</p>
+              <p className='track_artist'>{track.artistname}</p>
+            </TrackDetailtext>
+          </Trackinfo>
+        </TrackDetails>
+        {isInPlaylist ? <FaCheckCircle
+          size={22}
+          color='green'
+          style={{ cursor: 'pointer' }}
+          onClick={(e) => handleRemovefromplaylist(e, track.songid)} /> :
+          <IoIosAddCircleOutline size={24} style={{ cursor: 'pointer' }} onClick={(e) => handleAddClick(e, track.songid)} />
         }
-        <Trackinfo>
-          <TrackImage>
-            <img src={track.imageurl} alt="track_image" className='track_card_img' />
-          </TrackImage>
-          <TrackDetailtext>
-            <p className='track_title'>{track.title}</p>
-            <p className='track_artist'>{track.artistname}</p>
-          </TrackDetailtext>
-        </Trackinfo>
-      </TrackDetails>
-      {isInPlaylist ? <FaCheckCircle
-        size={22}
-        color='green'
-        style={{ cursor: 'pointer' }}
-        onClick={() => { }} /> :
-        <IoIosAddCircleOutline size={24} style={{ cursor: 'pointer' }} />
-      }
 
-      <Trackruntime>
-        <p>{Duration(track?.duration)}</p>
-      </Trackruntime>
-    </TrackCardMain>
+        <Trackruntime>
+          <p>{Duration(track?.duration)}</p>
+        </Trackruntime>
+      </TrackCardMain>
+    </>
   )
 }
 

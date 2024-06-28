@@ -35,9 +35,10 @@ function PlaylistDetails() {
   const userPlaylists = useSelector((state) => state.playlist.userPlaylist)
   const currentPlaylist = userPlaylists?.filter(playlist => playlist.playlistid === state.playlistid)
 
+  // console.log(userPlaylists)
 
   function setPlaylist() {
-    dispatch(setcurrentPlaylist(currentPlaylist[0].songs))
+    dispatch(setcurrentPlaylist(currentPlaylist[0]?.songs))
   }
 
   useEffect(() => {
@@ -50,7 +51,7 @@ function PlaylistDetails() {
   }, [dispatch, isLoggedin, token])
 
   useEffect(() => {
-    dispatch(setPlaylistData(currentPlaylist[0].songs))
+    dispatch(setPlaylistData(currentPlaylist[0]?.songs))
   }, [dispatch, currentPlaylist])
 
   return (
@@ -71,15 +72,15 @@ function PlaylistDetails() {
             </button>
             <p>{state.name}</p>
             <AlbumDetailsSub>
-              <p>{currentPlaylist[0].songs?.length} &nbsp;songs</p>
+              <p>{currentPlaylist[0]?.songs.length} &nbsp;songs</p>
             </AlbumDetailsSub>
           </AlbumDetailsDiv>
         </AlbumHeadContent>
       </AlbumHead>
       <AlbumtracksDiv>
         {
-          currentPlaylist[0].songs?.map((track, index) => (
-            <TrackCard track={track} index={index} key={track.songid} setPlaylist={setPlaylist} />
+          currentPlaylist[0]?.songs.map((track, index) => (
+            <TrackCard track={track} index={index} key={track.songid} setPlaylist={setPlaylist} playlistid={currentPlaylist[0]?.playlistid} />
           ))
         }
         {/* {userPlaylists?.map((track, index) => (

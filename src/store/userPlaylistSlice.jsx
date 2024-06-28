@@ -49,18 +49,7 @@ export const deletePlaylistApi = createAsyncThunk('deletePlaylistApi', async (pl
   return res
 })
 
-export const addtracktoplaylistApi = createAsyncThunk('addtracktoplaylistApi', async (addtoplaylistdata) => {
-  const req = await fetch(`${process.env.REACT_APP_API_URL}/addtracktoplaylist`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${addtoplaylistdata.token}`
-    },
-    body: JSON.stringify({ id: addtoplaylistdata.trackid, selectedplaylists: addtoplaylistdata.selectedPlaylists })
-  })
-  const res = await req.json()
-  return res
-})
+
 
 export const getplaylisttracksApi = createAsyncThunk('getplaylisttracksApi', async (playlist) => {
   const req = await fetch(`${process.env.REACT_APP_API_URL}/getplaylisttracks/${playlist.id}`, {
@@ -74,11 +63,38 @@ export const getplaylisttracksApi = createAsyncThunk('getplaylisttracksApi', asy
   return res
 })
 
+export const addtracktoplaylistApi = createAsyncThunk('addtracktoplaylistApi', async (addtoplaylistdata) => {
+  const req = await fetch(`${process.env.REACT_APP_API_URL}/addtracktoplaylist`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${addtoplaylistdata.token}`
+    },
+    body: JSON.stringify({ id: addtoplaylistdata.trackid, selectedplaylists: addtoplaylistdata.selectedPlaylists })
+  })
+  const res = await req.json()
+  return res
+})
+
+export const deletetrackfromplaylistApi = createAsyncThunk('deletetrackfromplaylistApi', async (trackdata) => {
+  // console.log(trackdata)
+  const req = await fetch(`${process.env.REACT_APP_API_URL}/removetrackfromplaylist`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${trackdata.token}`
+    },
+    body: JSON.stringify({ songid: trackdata.songid, playlistid: trackdata.playlistid })
+  })
+  const res = await req.json()
+  return res
+})
+
 export const playlistSlice = createSlice({
   name: 'playlist',
   initialState,
   reducers: {
-    setPlaylistData: (state, action) => { 
+    setPlaylistData: (state, action) => {
       state.playlistData = action.payload
     }
   },
@@ -88,8 +104,8 @@ export const playlistSlice = createSlice({
     })
       .addCase(getUserPlaylistApi.fulfilled, (state, action) => {
         state.loading = false
-        // console.log(action.payload.playlists)
         state.userPlaylist = action.payload.playlists
+        // console.log({ 'userplaylist': action.payload.playlists })
       })
       .addCase(getUserPlaylistApi.rejected, (state, action) => {
         state.loading = false
@@ -125,7 +141,7 @@ export const playlistSlice = createSlice({
     })
       .addCase(addtracktoplaylistApi.fulfilled, (state, action) => {
         state.loading = false
-        console.log(action.payload)
+        // console.log(action.payload)
         state.success = action.payload
       })
       .addCase(addtracktoplaylistApi.rejected, (state, action) => {
@@ -141,6 +157,27 @@ export const playlistSlice = createSlice({
         state.playlistData = action.payload.tracklist
       })
       .addCase(getplaylisttracksApi.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.error
+      })
+    builder.addCase(deletetrackfromplaylistApi.pending, (state) => {
+      state.loading = true
+    })
+      .addCase(deletetrackfromplaylistApi.fulfilled, (state, action) => {
+        state.loading = false
+        const { playlistid, songid } = action.payload.removedtrack[0]
+        const updatedPlaylist = state.userPlaylist.map((playlist) => {
+          if (playlist.playlistid === playlistid) {
+            return {
+              ...playlist,
+              songs: playlist.songs.filter(song => song.songid !== songid)
+            }
+          }
+          return playlist
+        })
+        state.userPlaylist = updatedPlaylist
+      })
+      .addCase(deletetrackfromplaylistApi.rejected, (state, action) => {
         state.loading = false
         state.error = action.error
       })
